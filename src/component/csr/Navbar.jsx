@@ -20,7 +20,7 @@ const Navbar = () => {
     <nav className="bg-[#1C2124] shadow-md p-4">
       <div className="xl:container xl:mx-auto flex justify-between items-center">
         {/* Logo */}
-        <Link href="/">
+        <Link href="/public">
           <Image src="/logo.png" alt="Logo" width={40} height={40} priority />
         </Link>
 
