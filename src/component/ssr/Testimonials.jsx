@@ -32,7 +32,7 @@ const Testimonials = () => {
           spaceBetween={30}
           slidesPerView={3}
           breakpoints={{
-            340: { slidesPerView: 2 },
+            340: { slidesPerView: 1 },
             1024: { slidesPerView: 3 },
           }}
         >
@@ -45,6 +45,7 @@ const Testimonials = () => {
           ))}
         </Swiper>
       </div>
+
     </div>
   );
 };

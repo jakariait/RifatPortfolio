@@ -2,7 +2,7 @@ import { FaLinkedin, FaFacebookF, FaYoutube, FaTiktok } from "react-icons/fa";
 
 const SocialLinks = () => {
   return (
-    <div className="flex space-x-4 text-2xl px-4">
+    <div className="flex space-x-4 text-2xl px-4 items-center justify-center">
       {/* LinkedIn Icon */}
       <a
         href="https://www.linkedin.com/in/elevatewithrifat/"

@@ -42,9 +42,9 @@ const Hero = () => {
             </ul>
           </div>
 
-          <div className={"flex gap-4 "}>
+          <div className={"flex flex-col md:flex-row gap-2 items-center  justify-center"}>
             <a
-              href="https://wa.me/8801234567890"
+              href="https://wa.me/8801307217573"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#EF6C00] px-6 py-4 rounded-xl font-bold text-white inline-flex items-center gap-2"
