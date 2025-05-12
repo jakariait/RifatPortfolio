@@ -17,7 +17,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-[#1C2124] shadow-md p-4">
+    <nav className="bg-[#1C2124] shadow-md p-4 sticky top-0 z-50" >
       <div className="xl:container xl:mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link href="/public">
