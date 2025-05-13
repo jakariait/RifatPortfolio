@@ -17,11 +17,13 @@ const ProductGallery = ({ images, zoom = true }) => {
 
   useEffect(() => {
     if (thumbnailRefs.current[activeIndex]) {
-      thumbnailRefs.current[activeIndex].scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
+      const container = thumbnailRefs.current[activeIndex]?.parentNode;
+      if (container) {
+        container.scrollTo({
+          left: thumbnailRefs.current[activeIndex].offsetLeft - container.offsetWidth / 2,
+          behavior: "smooth",
+        });
+      }
     }
   }, [activeIndex]);
 
