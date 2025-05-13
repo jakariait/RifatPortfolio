@@ -92,7 +92,7 @@ const ToolsSection = () => {
             >
               <div className="flex flex-col items-center justify-center">
                 {section.icon}
-                <h3 className="text-xl font-semibold mb-3">{section.title}</h3>
+                <h3 className="text-xl text-black font-semibold mb-3">{section.title}</h3>
                 <ul className=" space-y-2 text-gray-700 ">
                   {section.items.map((item, i) => (
                     <li key={i} className={"flex  gap-2"}>

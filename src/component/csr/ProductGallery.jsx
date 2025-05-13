@@ -48,22 +48,22 @@ const ProductGallery = ({ images, zoom = true }) => {
         <div className="absolute bottom-1 right-1 md:bottom-4 flex md:right-4 z-10 gap-1 justify-center items-center">
           {images.length > 1 && (
             <div className="flex items-center gap-1">
-              <div className="bg-white p-2 text-xs">
+              <div className="bg-white p-2 text-xs text-[#EF6C00]" >
                 {activeIndex + 1} / {images.length}
               </div>
               <button
-                className="bg-white p-2 cursor-pointer"
+                className="bg-white p-2 text-[#EF6C00] cursor-pointer"
                 onClick={() => changeImage("prev")}
                 disabled={activeIndex === 0}
               >
                 <IoIosArrowBack />
               </button>
               <button
-                className="bg-white p-2 cursor-pointer"
+                className="bg-white p-2 text-[#EF6C00] cursor-pointer"
                 onClick={() => changeImage("next")}
                 disabled={activeIndex === images.length - 1}
               >
-                <IoIosArrowForward />
+                <IoIosArrowForward  />
               </button>
             </div>
           )}
@@ -81,7 +81,7 @@ const ProductGallery = ({ images, zoom = true }) => {
                   src={url}
                   className="w-full h-full md:h-[700px]  object-contain cursor-pointer"
                 />
-                <button className="absolute md:bottom-4 bottom-1 left-1 p-3 md:left-3 bg-white rounded-full cursor-pointer">
+                <button className="absolute md:bottom-4 bottom-1 left-1 p-3 md:left-3 bg-white rounded-full cursor-pointer text-[#EF6C00]">
                   <BsArrowsFullscreen />
                 </button>
               </a>
