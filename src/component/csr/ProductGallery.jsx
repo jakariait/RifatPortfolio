@@ -41,6 +41,9 @@ const ProductGallery = ({ images, zoom = true }) => {
 
   return (
     <div className="flex flex-col items-center p-4">
+      <h2 className="text-4xl md:text-5xl font-bold text-[#EF6C00] mb-10">
+        My Recent Campaigns Result
+      </h2>
       <div className="relative w-full md:p-3">
         <div className="absolute bottom-1 right-1 md:bottom-4 flex md:right-4 z-10 gap-1 justify-center items-center">
           {images.length > 1 && (
