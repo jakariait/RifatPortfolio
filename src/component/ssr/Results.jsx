@@ -13,22 +13,14 @@ const Results = () => {
   return (
     <div>
       <div
-        className="md:flex justify-center hidden bg-black  "
-        style={{
-          backgroundImage: "url('/certificate-bg.png')", // Replace with the path to your background image
-          backgroundSize: "cover",
-          backgroundPosition: "cover",
-        }}
+        className="md:flex justify-center hidden bg-[#09122C]  "
+
       >
         <ProductGallery images={images} />
       </div>
       <div
-        className={"md:hidden bg-black"}
-        style={{
-          backgroundImage: "url('/certificate-bg.png')", // Replace with the path to your background image
-          backgroundSize: "cover",
-          backgroundPosition: "cover",
-        }}
+        className={"md:hidden bg-[#09122C]"}
+
       >
         <ProductGallery images={images} />
       </div>
