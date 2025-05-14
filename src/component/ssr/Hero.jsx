@@ -18,7 +18,7 @@ const listItems = [
 const Hero = () => {
   return (
     <div id="about" className="bg-black animated-bg scroll-mt-10">
-      <div className="xl:container xl:mx-auto flex flex-col md:flex-row items-stretch min-h-[600px]">
+      <div className="xl:container xl:mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 items-center justify-center">
         {/* Left Content */}
         <div className="text-white p-4 flex-1 flex flex-col justify-center gap-10">
           <div>
@@ -31,7 +31,12 @@ const Hero = () => {
               <span className="block md:inline">Specialist</span>
             </h2>
 
-            <img src="/rifat black bg.png" alt="" className={"lg:hidden"} />
+            {/*<img src="/rifat black bg.png" alt="" className={"lg:hidden"} />*/}
+            <img
+              src="/WhatsApp Image 2025-05-14 at 10.59.03 PM.jpeg"
+              alt=""
+              className={"lg:hidden pt-5 pb-5"}
+            />
 
             <ul className="mt-6 space-y-4 text-gray-300 list-disc pl-6">
               {listItems.map((item, index) => (
@@ -42,7 +47,11 @@ const Hero = () => {
             </ul>
           </div>
 
-          <div className={"flex flex-col md:flex-row gap-2 items-center  justify-center"}>
+          <div
+            className={
+              "flex flex-col md:flex-row gap-2 items-center  justify-center"
+            }
+          >
             <a
               href="https://wa.me/8801307217573"
               target="_blank"
@@ -62,15 +71,13 @@ const Hero = () => {
         </div>
 
         {/* Right Side Background Image starting from bottom */}
-        <div
-          className="flex-1 bg-no-repeat bg-contain bg-bottom hidden lg:block"
-          style={{
-            backgroundImage: `url('/rifat black bg.png')`,
-            backgroundPosition: "bottom",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "contain",
-          }}
-        ></div>
+        <div className="hidden lg:block">
+          <img
+            src="/WhatsApp Image 2025-05-14 at 10.59.03 PM.jpeg"
+            alt=""
+            className="w-full"
+          />
+        </div>
       </div>
     </div>
   );
