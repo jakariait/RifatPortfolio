@@ -45,9 +45,9 @@ const FaqAccordion = () => {
         </h2>
         <div className="space-y-4 md:w-4xl mx-auto text-gray-100">
           {faqs.map((faq, index) => (
-            <div key={index} className="border border-gray-700 rounded-lg">
+            <div key={index} className="border border-gray-700  rounded-lg">
               <button
-                className="w-full text-left px-4 py-3 flex justify-between items-center focus:outline-none"
+                className="w-full text-left px-4 py-3 flex justify-between cursor-pointer items-center focus:outline-none"
                 onClick={() => toggle(index)}
               >
                 <span className="text-2xl font-medium cursor-pointer">

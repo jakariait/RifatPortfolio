@@ -12,24 +12,22 @@ const CallToAction = () => {
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <a
-            href="mailto:your@email.com"
-            className="bg-[#EF6C00] hover:bg-[#d45f00] text-white font-semibold py-3 px-6 rounded-md transition"
+            href="mailto:hello@elevatewithrfat.com"
+            className="bg-[#EF6C00] hover:bg-[#d45f00] text-white font-bold py-3 px-6 rounded-md transition"
           >
             📩 Hire Me
           </a>
           <a
-            href="https://calendly.com/your-schedule-link"
+            href="https://wa.me/8801307217573"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#EF6C00] hover:bg-[#d45f00] text-white font-semibold py-3 px-6 rounded-md transition"
+            className="bg-[#EF6C00] hover:bg-[#d45f00] text-white font-bold py-3 px-6 rounded-md transition"
           >
             📞 Schedule a Call
           </a>
           <a
-            href="https://your-website.com/request-proposal"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[#EF6C00] hover:bg-[#d45f00] text-white font-semibold py-3 px-6 rounded-md transition"
+            href="mailto:hello@elevatewithrfat.com"
+            className="bg-[#EF6C00] hover:bg-[#d45f00] text-white font-bold py-3 px-6 rounded-md transition"
           >
             🧾 Request Proposal
           </a>
