@@ -8,6 +8,7 @@ import ToolsSection from "@/component/ssr/ToolsSection";
 import Results from "@/component/ssr/Results";
 import Footer from "@/component/ssr/Footer";
 import FaqAccordion from "@/component/csr/FaqAccordion";
+import PricingPlans from "@/component/ssr/PricingSection";
 
 export default function Home() {
 
@@ -23,6 +24,7 @@ export default function Home() {
       <ToolsSection />
       <Results/>
       <FaqAccordion/>
+      <PricingPlans/>
       <Footer />
     </div>
   );
