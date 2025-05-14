@@ -17,11 +17,15 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-[#1C2124] shadow-md p-4 sticky top-0 z-50">
+    <nav className="bg-[#1C2124] shadow-md px-4 sticky top-0 z-50">
       <div className="xl:container xl:mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link href="/">
-          <Image src="/logo.png" alt="Logo" width={40} height={40} priority />
+          <img
+            src="/20250514_224704.png"
+            alt="Elevate With Rifat"
+            className={"w-40 -m-2"}
+          />
         </Link>
 
         {/* Desktop Menu */}
@@ -39,12 +43,12 @@ const Navbar = () => {
         </ul>
 
         {/* Hamburger Icon (Mobile) */}
-        <div className="md:hidden text-white">
+        <div className="md:hidden text-white border-2 border-[#EF6C00] flex items-center justify-center ">
           <button
             className="cursor-pointer"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            {menuOpen ? <X size={28} /> : <Menu size={28} />}
+            {menuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
         </div>
       </div>
