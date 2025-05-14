@@ -10,6 +10,7 @@ import Footer from "@/component/ssr/Footer";
 import FaqAccordion from "@/component/csr/FaqAccordion";
 import PricingPlans from "@/component/ssr/PricingSection";
 import WhatBusinessOwnersWant from "@/component/ssr/WhatBusinessOwnersWant";
+import CallToAction from "@/component/ssr/CallToAction";
 
 export default function Home() {
 
@@ -27,6 +28,7 @@ export default function Home() {
       <FaqAccordion/>
       <PricingPlans/>
       <WhatBusinessOwnersWant/>
+      <CallToAction/>
       <Footer />
     </div>
   );

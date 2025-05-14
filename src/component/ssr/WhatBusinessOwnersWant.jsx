@@ -8,11 +8,11 @@ const ServiceCard = ({ title, whatTheyWant, whatIDeliver }) => {
       </div>
       <div className="mb-2 flex items-center justify-center flex-col">
         <h4 className="font-semibold text-[#EF6C00]">What They Want:</h4>
-        <p>{whatTheyWant}</p>
+        <p className={"text-center"}>{whatTheyWant}</p>
       </div>
       <div className="mt-2 flex items-center justify-center flex-col">
         <h4 className="font-semibold text-[#EF6C00]">What I Deliver:</h4>
-        <p>{whatIDeliver}</p>
+        <p className={"text-center"}>{whatIDeliver}</p>
       </div>
     </div>
   );
