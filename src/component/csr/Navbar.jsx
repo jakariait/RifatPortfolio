@@ -3,21 +3,21 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X } from "lucide-react"; // Optional: Lucide icons or use any icon lib
+import { Menu, X } from "lucide-react";
 
 const menuItems = [
-  { name: "Home", path: "/" },
-  { name: "About Me", path: "/" },
-  { name: "Testimonial", path: "/" },
-  { name: "Ebook", path: "/" },
-  { name: "Contact Us", path: "/" },
+  { name: "About Me", path: "#about" },
+  { name: "Testimonial", path: "#testimonial" },
+  { name: "Pricing", path: "#pricing" },
+  { name: "FAQs", path: "#faqs" },
+  { name: "Contact Us", path: "#contact" },
 ];
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-[#1C2124] shadow-md p-4 sticky top-0 z-50" >
+    <nav className="bg-[#1C2124] shadow-md p-4 sticky top-0 z-50">
       <div className="xl:container xl:mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link href="/">
@@ -28,19 +28,22 @@ const Navbar = () => {
         <ul className="hidden md:flex space-x-6 text-white font-medium">
           {menuItems.map((item, index) => (
             <li key={index}>
-              <Link
+              <a
                 href={item.path}
                 className="hover:text-blue-500 transition-colors"
               >
                 {item.name}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
 
         {/* Hamburger Icon (Mobile) */}
-        <div className="md:hidden text-white ">
-          <button className={"cursor-pointer border-1 border-green-600"}  onClick={() => setMenuOpen(!menuOpen) }>
+        <div className="md:hidden text-white">
+          <button
+            className="cursor-pointer"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
@@ -51,13 +54,13 @@ const Navbar = () => {
         <ul className="md:hidden mt-4 space-y-4 text-white text-center font-medium bg-[#1C2124] p-4 rounded-md">
           {menuItems.map((item, index) => (
             <li key={index}>
-              <Link
+              <a
                 href={item.path}
                 className="block hover:text-blue-500 transition-colors"
-                onClick={() => setMenuOpen(false)} // close on click
+                onClick={() => setMenuOpen(false)}
               >
                 {item.name}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>

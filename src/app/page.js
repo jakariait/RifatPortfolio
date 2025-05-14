@@ -13,8 +13,6 @@ import WhatBusinessOwnersWant from "@/component/ssr/WhatBusinessOwnersWant";
 import CallToAction from "@/component/ssr/CallToAction";
 
 export default function Home() {
-
-
   return (
     <div>
       <Navbar />
@@ -24,11 +22,11 @@ export default function Home() {
       <Testimonial />
       <WorkingProcess />
       <ToolsSection />
-      <Results/>
-      <FaqAccordion/>
-      <PricingPlans/>
-      <WhatBusinessOwnersWant/>
-      <CallToAction/>
+      <Results />
+      <FaqAccordion />
+      <PricingPlans />
+      <WhatBusinessOwnersWant />
+      <CallToAction />
       <Footer />
     </div>
   );

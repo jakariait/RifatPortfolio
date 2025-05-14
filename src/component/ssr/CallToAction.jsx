@@ -2,7 +2,7 @@ import React from "react";
 
 const CallToAction = () => {
   return (
-    <section className="bg-[#111] text-white py-12 px-6">
+    <section id={"contact"} className="bg-[#111] text-white py-12 px-6">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-4xl font-bold text-[#EF6C00] mb-4">
           Let’s Make Your Marketing Work Smarter

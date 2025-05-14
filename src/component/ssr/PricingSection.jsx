@@ -97,8 +97,9 @@ const PricingCard = ({
   isHighlighted = false,
   emoji,
 }) => (
-  <div
-    className={`flex flex-col justify-between p-6 rounded-xl border shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer ${
+  <section
+    id={"pricing"}
+    className={`scroll-mt-96 flex flex-col justify-between p-6 rounded-xl border shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer ${
       isHighlighted
         ? "bg-blue-950 border-blue-600 text-white"
         : "bg-gray-800 border-gray-700 text-gray-200"
@@ -120,7 +121,7 @@ const PricingCard = ({
         ))}
       </ul>
     </div>
-  </div>
+  </section>
 );
 
 const PricingSection = () => {

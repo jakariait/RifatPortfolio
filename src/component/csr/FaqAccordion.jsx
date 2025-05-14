@@ -38,7 +38,7 @@ const FaqAccordion = () => {
   };
 
   return (
-    <div className=" bg-black pt-12 px-4 pb-16 ">
+    <div id={"faqs"} className=" bg-black pt-12 px-4 pb-16 scroll-mt-20">
       <div className={"xl:container xl:mx-auto "}>
         <h2 className="text-3xl font-bold mb-8 text-center text-[#EF6C00]">
           Frequently Asked Questions
@@ -50,7 +50,7 @@ const FaqAccordion = () => {
                 className="w-full text-left px-4 py-3 flex justify-between cursor-pointer items-center focus:outline-none"
                 onClick={() => toggle(index)}
               >
-                <span className="text-2xl font-medium cursor-pointer">
+                <span className="text-lg md:text-2xl font-medium cursor-pointer">
                   {faq.question}
                 </span>
                 <span className={"cursor-pointer"}>

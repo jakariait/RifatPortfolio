@@ -17,7 +17,7 @@ const listItems = [
 
 const Hero = () => {
   return (
-    <div className="bg-black animated-bg">
+    <div id="about" className="bg-black animated-bg scroll-mt-10">
       <div className="xl:container xl:mx-auto flex flex-col md:flex-row items-stretch min-h-[600px]">
         {/* Left Content */}
         <div className="text-white p-4 flex-1 flex flex-col justify-center gap-10">
