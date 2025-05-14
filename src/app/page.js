@@ -7,6 +7,7 @@ import WorkingProcess from "@/component/ssr/WorkingProcess";
 import ToolsSection from "@/component/ssr/ToolsSection";
 import Results from "@/component/ssr/Results";
 import Footer from "@/component/ssr/Footer";
+import FaqAccordion from "@/component/csr/FaqAccordion";
 
 export default function Home() {
 
@@ -21,6 +22,7 @@ export default function Home() {
       <WorkingProcess />
       <ToolsSection />
       <Results/>
+      <FaqAccordion/>
       <Footer />
     </div>
   );
