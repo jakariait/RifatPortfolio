@@ -11,6 +11,7 @@ import FaqAccordion from "@/component/csr/FaqAccordion";
 import PricingPlans from "@/component/ssr/PricingSection";
 import WhatBusinessOwnersWant from "@/component/ssr/WhatBusinessOwnersWant";
 import CallToAction from "@/component/ssr/CallToAction";
+import ScrollToTop from "@/component/csr/ScrollToTop";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
       <WhatBusinessOwnersWant />
       <CallToAction />
       <Footer />
+        <ScrollToTop />
     </div>
   );
 }
