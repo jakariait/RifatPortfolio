@@ -7,10 +7,10 @@ import { Menu, X } from "lucide-react"; // Optional: Lucide icons or use any ico
 
 const menuItems = [
   { name: "Home", path: "/" },
-  { name: "About Me", path: "/about" },
-  { name: "Testimonial", path: "/testimonial" },
-  { name: "Ebook", path: "/ebook" },
-  { name: "Contact Us", path: "/contact" },
+  { name: "About Me", path: "/" },
+  { name: "Testimonial", path: "/" },
+  { name: "Ebook", path: "/" },
+  { name: "Contact Us", path: "/" },
 ];
 
 const Navbar = () => {
@@ -20,7 +20,7 @@ const Navbar = () => {
     <nav className="bg-[#1C2124] shadow-md p-4 sticky top-0 z-50" >
       <div className="xl:container xl:mx-auto flex justify-between items-center">
         {/* Logo */}
-        <Link href="/public">
+        <Link href="/">
           <Image src="/logo.png" alt="Logo" width={40} height={40} priority />
         </Link>
 
