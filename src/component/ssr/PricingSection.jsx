@@ -30,6 +30,20 @@ const plans = {
         "Creative Direction + Copywriting Support",
       ],
     },
+    {
+      title: "Scale Plan",
+      price: "$800/month",
+      highlights: [
+        "Up to 10 Ad Campaigns (Meta, Google, TikTok)",
+        "Conversion Funnel Strategy",
+        "Advanced Audience Layers & Split Testing",
+        "Dynamic Creative Strategy",
+        "Weekly Optimization & Scaling",
+        "Unlimited Messaging Support (via email/Slack)",
+        "4x Monthly Strategy Calls",
+        "Comprehensive Monthly Report with Insights"
+      ],
+    },
   ],
   project: [
     {
@@ -164,8 +178,10 @@ const PricingSection = () => {
             your exact goals.
           </p>
           <a
-            href="#"
-            className="inline-block bg-[#EF6C00] text-white px-6 py-3 rounded-md  font-bold  transition"
+            href="https://wa.me/8801307217573"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-[#EF6C00] text-white px-6 py-3 rounded-md font-bold transition"
           >
             👉 Get a Custom Pricing
           </a>

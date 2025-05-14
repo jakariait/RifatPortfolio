@@ -9,6 +9,7 @@ import Results from "@/component/ssr/Results";
 import Footer from "@/component/ssr/Footer";
 import FaqAccordion from "@/component/csr/FaqAccordion";
 import PricingPlans from "@/component/ssr/PricingSection";
+import WhatBusinessOwnersWant from "@/component/ssr/WhatBusinessOwnersWant";
 
 export default function Home() {
 
@@ -25,6 +26,7 @@ export default function Home() {
       <Results/>
       <FaqAccordion/>
       <PricingPlans/>
+      <WhatBusinessOwnersWant/>
       <Footer />
     </div>
   );
