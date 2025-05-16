@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "aos": "^2.3.4",
+    "framer-motion": "^12.12.1",
     "gsap": "^3.13.0",
     "lightgallery": "^2.8.3",
     "lucide-react": "^0.510.0",

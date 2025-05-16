@@ -41,7 +41,7 @@ const ProductGallery = ({ images, zoom = true }) => {
 
   return (
     <div className="flex flex-col items-center p-4">
-      <h2 className="text-4xl md:text-5xl font-bold text-[#EF6C00] mb-10">
+      <h2 className="text-xl md:text-2xl font-bold text-[#EF6C00] mb-10">
         My Recent Campaigns Result
       </h2>
       <div className="relative w-full md:p-3">

@@ -49,7 +49,7 @@ const Clients = () => {
            backgroundPosition: 'cover',
          }}>
       <div className="xl:container xl:mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#EF6C00] mb-10">Clients I worked with</h2>
+        <h2 className="text-xl md:text-2xl font-bold text-[#EF6C00] mb-10">Clients I worked with</h2>
 
         <div className="grid grid-cols-2 md:grid-cols-5 gap-x-4 gap-y-10">
           {brands.map((brand, index) => (

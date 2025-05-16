@@ -38,7 +38,7 @@ const WorkingProcessSection = () => {
   return (
     <section className="bg-black pt-12 px-4 pb-16 text-white relative">
       <div className="xl:container xl:mx-auto max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#EF6C00]">
+        <h2 className="text-xl md:text-2xl font-bold mb-4 text-[#EF6C00]">
           My Working Process
         </h2>
         <p className="text-lg text-gray-300 mb-12">

@@ -76,7 +76,7 @@ const ToolsSection = () => {
     <section className="bg-[#1C2124] p-4 pt-10 pb-10">
       <div className="xl:container xl:mx-auto">
         <div className={"text-center"}>
-          <h2 className="text-3xl font-bold mb-6 text-[#EF6C00]">
+          <h2 className="text-xl md:text-2xl font-bold mb-6 text-[#EF6C00]">
             Tools I Use To Drive Results
           </h2>
           <p className="text-lg text-gray-300 mb-12">

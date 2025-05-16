@@ -74,7 +74,7 @@ const WhatBusinessOwnersWant = () => {
     <section className="bg-black py-12 px-6 text-gray-100">
       <div className={"xl:container xl:mx-auto"}>
         <div className="max-w-4xl mx-auto text-center mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#EF6C00]">
+          <h2 className="text-xl md:text-2xl font-bold mb-4 text-[#EF6C00]">
             What Business Owners Want — And How I Deliver
           </h2>
           <p className="text-lg text-gray-400">

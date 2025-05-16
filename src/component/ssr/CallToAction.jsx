@@ -4,7 +4,7 @@ const CallToAction = () => {
   return (
     <section id={"contact"} className="bg-[#111] text-white py-12 px-6">
       <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-[#EF6C00] mb-4">
+        <h2 className="text-xl md:text-2xl font-bold text-[#EF6C00] mb-4">
           Let’s Make Your Marketing Work Smarter
         </h2>
         <p className="text-lg text-gray-300 mb-8">

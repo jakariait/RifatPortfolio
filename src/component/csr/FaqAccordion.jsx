@@ -40,7 +40,7 @@ const FaqAccordion = () => {
   return (
     <div id={"faqs"} className=" bg-black pt-12 px-4 pb-16 scroll-mt-20">
       <div className={"xl:container xl:mx-auto "}>
-        <h2 className="text-3xl font-bold mb-8 text-center text-[#EF6C00]">
+        <h2 className="text-xl md:text-2xl font-bold mb-8 text-center text-[#EF6C00]">
           Frequently Asked Questions
         </h2>
         <div className="space-y-4 md:w-4xl mx-auto text-gray-100">

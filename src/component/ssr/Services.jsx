@@ -39,7 +39,7 @@ const Services = () => {
   return (
     <div className="bg-[#1C2124] text-white px-4 pt-10 pb-10">
       <div className="xl:container xl:mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#EF6C00] mb-10">Here's What I Can Help You With:</h2>
+        <h2 className="text-xl md:text-2xl font-bold text-[#EF6C00] mb-10">Here's What I Can Help You With:</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {services.map((service, index) => (

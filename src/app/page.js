@@ -27,9 +27,10 @@ export default function Home() {
       <FaqAccordion />
       <PricingPlans />
       <WhatBusinessOwnersWant />
+      <WhatBusinessOwnersWant />
       <CallToAction />
       <Footer />
-        <ScrollToTop />
+      <ScrollToTop />
     </div>
   );
 }
