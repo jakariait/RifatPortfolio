@@ -77,7 +77,7 @@ const ToolsSection = () => {
       <div className="xl:container xl:mx-auto">
         <div className={"text-center"}>
           <h2 className="text-xl md:text-2xl font-bold mb-6 text-[#EF6C00]">
-            Tools I Use To Drive Results
+            Tools I Use:
           </h2>
           <p className="text-lg text-gray-300 mb-12">
             The platforms and tools that power every successful campaign.

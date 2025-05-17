@@ -42,7 +42,7 @@ const ProductGallery = ({ images, zoom = true }) => {
   return (
     <div className="flex flex-col items-center p-4">
       <h2 className="text-xl md:text-2xl font-bold text-[#EF6C00] mb-10">
-        My Recent Campaigns Result
+        My Recent Work:
       </h2>
       <div className="relative w-full md:p-3">
         <div className="absolute bottom-1 right-1 md:bottom-4 flex md:right-4 z-10 gap-1 justify-center items-center">
@@ -79,7 +79,7 @@ const ProductGallery = ({ images, zoom = true }) => {
               >
                 <img
                   src={url}
-                  className="w-full h-full md:h-[700px]  object-contain cursor-pointer"
+                  className="w-full h-full md:h-[800px]  object-contain cursor-pointer"
                 />
                 <button className="absolute md:bottom-4 bottom-1 left-1 p-3 md:left-3 bg-white rounded-full cursor-pointer text-[#EF6C00]">
                   <BsArrowsFullscreen />

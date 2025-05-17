@@ -132,7 +132,7 @@ const PricingSection = () => {
       <div className="xl:container xl:mx-auto flex flex-col items-center justify-center">
         <div className=" mx-auto text-center mb-12">
           <h2 className="text-xl md:text-2xl font-bold mb-4 text-[#EF6C00]">
-            Work With Me: Pricing Plans
+            Pricing Plans:
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
             You can hire me monthly for ongoing support or per project for

@@ -23,7 +23,7 @@ const Hero = () => {
         <div className="text-white p-4 flex-1 flex flex-col justify-center gap-10">
           <div>
             <h1 className="text-[40px] md:text-[70px] text-[#EF6C00] font-bold">
-              Ridwan Haque Rifat
+              Ridwan H. Rifat
             </h1>
             <h2 className="text-[40px] md:text-[50px] text-gray-50 font-bold leading-tight">
               <span className="block md:inline">Performance</span>{" "}

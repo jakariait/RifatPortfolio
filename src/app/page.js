@@ -21,13 +21,12 @@ export default function Home() {
       <Services />
       <Clients />
       <Testimonial />
+      <Results />
       <WorkingProcess />
       <ToolsSection />
-      <Results />
-      <FaqAccordion />
+      <WhatBusinessOwnersWant />
       <PricingPlans />
-      <WhatBusinessOwnersWant />
-      <WhatBusinessOwnersWant />
+      <FaqAccordion />
       <CallToAction />
       <Footer />
       <ScrollToTop />

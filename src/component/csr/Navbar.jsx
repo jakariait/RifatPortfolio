@@ -54,8 +54,12 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      {menuOpen && (
-        <ul className="md:hidden mt-4 space-y-4 text-white text-center font-medium bg-[#1C2124] p-4 rounded-md">
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+          menuOpen ? 'max-h-96 opacity-100 scale-100' : 'max-h-0 opacity-0 scale-95'
+        }`}
+      >
+        <ul className="mt-4 space-y-4 text-white text-center font-medium bg-[#1C2124] p-4 rounded-md">
           {menuItems.map((item, index) => (
             <li key={index}>
               <a
@@ -68,7 +72,8 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-      )}
+      </div>
+
     </nav>
   );
 };
