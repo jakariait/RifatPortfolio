@@ -12,10 +12,12 @@ import PricingPlans from "@/component/ssr/PricingSection";
 import WhatBusinessOwnersWant from "@/component/ssr/WhatBusinessOwnersWant";
 import CallToAction from "@/component/ssr/CallToAction";
 import ScrollToTop from "@/component/csr/ScrollToTop";
+import GTMPageView from "@/component/csr/GTMPageView";
 
 export default function Home() {
   return (
     <div>
+      <GTMPageView/>
       <Navbar />
       <Hero />
       <Services />
