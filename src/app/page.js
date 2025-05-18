@@ -13,6 +13,7 @@ import WhatBusinessOwnersWant from "@/component/ssr/WhatBusinessOwnersWant";
 import CallToAction from "@/component/ssr/CallToAction";
 import ScrollToTop from "@/component/csr/ScrollToTop";
 import GTMPageView from "@/component/csr/GTMPageView";
+import WhatsAppButton from "@/component/csr/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
       <CallToAction />
       <Footer />
       <ScrollToTop />
+      <WhatsAppButton/>
     </div>
   );
 }
