@@ -17,7 +17,7 @@ const listItems = [
 
 const Hero = () => {
   return (
-    <div id="about" className="bg-black animated-bg scroll-mt-10">
+    <div id="about" className="bg-black animated-bg scroll-mt-10 pb-30 ">
       <div className="xl:container xl:mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 items-center justify-center">
         {/* Left Content */}
         <div className="text-white p-4 flex-1 flex flex-col justify-center gap-10">

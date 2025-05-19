@@ -14,6 +14,7 @@ import CallToAction from "@/component/ssr/CallToAction";
 import ScrollToTop from "@/component/csr/ScrollToTop";
 import GTMPageView from "@/component/csr/GTMPageView";
 import WhatsAppButton from "@/component/csr/WhatsAppButton";
+import Stats from "@/component/csr/Stats";
 
 export default function Home() {
   return (
@@ -21,7 +22,9 @@ export default function Home() {
       <GTMPageView/>
       <Navbar />
       <Hero />
-      <Services />
+        <Stats />
+
+        <Services />
       <Clients />
       <Testimonial />
       <Results />

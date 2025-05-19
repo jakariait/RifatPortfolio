@@ -37,7 +37,7 @@ const services = [
 
 const Services = () => {
   return (
-    <div className="bg-[#1C2124] text-white px-4 pt-10 pb-10">
+    <div className="bg-[#1C2124] text-white px-4 pt-35 md:pt-30 pb-10 pt">
       <div className="xl:container xl:mx-auto text-center">
         <h2 className="text-xl md:text-2xl font-bold text-[#EF6C00] mb-10">I Can Help You With:</h2>
 
