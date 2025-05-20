@@ -17,26 +17,25 @@ import WhatsAppButton from "@/component/csr/WhatsAppButton";
 import Stats from "@/component/csr/Stats";
 
 export default function Home() {
-  return (
-    <div>
-      <GTMPageView/>
-      <Navbar />
-      <Hero />
-        <Stats />
-
-        <Services />
-      <Clients />
-      <Testimonial />
-      <Results />
-      <WorkingProcess />
-      <ToolsSection />
-      <WhatBusinessOwnersWant />
-      <PricingPlans />
-      <FaqAccordion />
-      <CallToAction />
-      <Footer />
-      <ScrollToTop />
-      <WhatsAppButton/>
-    </div>
-  );
+	return (
+		<div>
+			<GTMPageView />
+			<Navbar />
+			<Hero />
+			<Stats />
+			<Services />
+			<Clients />
+			<Testimonial />
+			<Results />
+			<WorkingProcess />
+			<ToolsSection />
+			<WhatBusinessOwnersWant />
+			<PricingPlans />
+			<FaqAccordion />
+			<CallToAction />
+			<Footer />
+			<ScrollToTop />
+			<WhatsAppButton />
+		</div>
+	);
 }
