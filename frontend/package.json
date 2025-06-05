@@ -10,7 +10,12 @@
 		"create-admin": "node -r esm src/scripts/createAdmin.js"
 	},
 	"dependencies": {
+		"@emotion/react": "^11.14.0",
+		"@emotion/styled": "^11.14.0",
+		"@mui/icons-material": "^7.1.1",
+		"@mui/material": "^7.1.1",
 		"aos": "^2.3.4",
+		"axios": "^1.9.0",
 		"bcryptjs": "^2.4.3",
 		"esm": "^3.2.25",
 		"framer-motion": "^12.12.1",
@@ -20,12 +25,17 @@
 		"lucide-react": "^0.510.0",
 		"mongoose": "^8.15.0",
 		"next": "15.3.2",
+		"primeicons": "^7.0.0",
+		"primereact": "^10.9.6",
+		"quill": "^2.0.3",
 		"react": "^19.0.0",
 		"react-countup": "^6.5.3",
 		"react-dom": "^19.0.0",
 		"react-icons": "^5.5.0",
 		"react-intersection-observer": "^9.16.0",
-		"swiper": "^11.2.6"
+		"react-loading-skeleton": "^3.5.0",
+		"swiper": "^11.2.6",
+		"zustand": "^5.0.5"
 	},
 	"devDependencies": {
 		"@eslint/eslintrc": "^3",

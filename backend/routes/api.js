@@ -9,6 +9,7 @@ const FaqController = require("../controllers/FaqController");
 const BrandController = require("../controllers/BrandController");
 const ResultController = require("../controllers/ResultController");
 const blogController = require("../controllers/BlogController");
+const TestimonialController = require("../controllers/TestimonialController");
 
 // Admin
 const { adminProtect } = require("../middlewares/authAdminMiddleware");
@@ -69,7 +70,7 @@ router.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes for Contact Us Form
 router.post("/contacts", contactController.createContact);
-router.get("/contacts", adminProtect, contactController.getAllContacts);
+router.get("/contacts", adminProtect,  contactController.getAllContacts);
 router.get("/contacts/:id", adminProtect, contactController.getContactById);
 router.put("/contacts/:id", adminProtect, contactController.updateContact);
 router.delete("/contacts/:id", adminProtect, contactController.deleteContact);
@@ -79,8 +80,8 @@ router.post("/admin/login", AdminController.loginAdmin);
 router.get("/admin/me", authenticateToken, AdminController.getLoggedInAdmin);
 
 // CRUD routes for Admin User
-router.post("/admin/create", adminProtect, AdminController.createAdmin);
-router.get("/admin/getall", adminProtect, AdminController.getAllAdmins);
+router.post("/admin/create", AdminController.createAdmin);
+router.get("/admin/getall", AdminController.getAllAdmins);
 router.get("/admin/:id", adminProtect, AdminController.getAdminById);
 router.put("/admin/:id", adminProtect, AdminController.updateAdmin);
 router.delete("/admin/:id", adminProtect, AdminController.deleteAdmin);
@@ -105,6 +106,22 @@ router.delete(
   "/deletebyidcarousel/:id",
   adminProtect,
   BrandController.deleteByIdCarousel,
+);
+
+//  Routes for Testimonial
+router.post(
+  "/createtestimonial",
+  upload,
+  adminProtect,
+  TestimonialController.createCarousel,
+);
+
+router.get("/getalltestimonial", TestimonialController.getAllCarousel);
+
+router.delete(
+  "/deletebyidtestimonial/:id",
+  adminProtect,
+  TestimonialController.deleteByIdCarousel,
 );
 
 //  Routes for Results

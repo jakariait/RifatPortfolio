@@ -1,13 +1,15 @@
-import { checkAuth } from "@/lib/auth";
-import { redirect } from "next/navigation";
-import DashboardClient from "./DashboardClient";
+"use client";
+import React from "react";
+import AdminList from "@/components/AdminList";
+import ContactTable from "@/components/ContactTable";
 
-export default async function DashboardPage() {
-	const { isAuthenticated } = await checkAuth();
+const Page = () => {
+  return (
+    <div className={"grid grid-cols-1 gap-4 xl:container xl:mx-auto"}>
+      <AdminList />
+      <ContactTable />
+    </div>
+  );
+};
 
-	if (!isAuthenticated) {
-		redirect("/admin");
-	}
-
-	return <DashboardClient />;
-}
+export default Page;

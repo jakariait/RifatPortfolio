@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function ContactForm() {
 	const [formData, setFormData] = useState({
 		fullName: "",
-		email: "",
+		emailAddress: "", // renamed from 'email'
 		message: "",
 	});
 	const [status, setStatus] = useState({ type: "", message: "" });
@@ -24,8 +24,10 @@ export default function ContactForm() {
 		setLoading(true);
 		setStatus({ type: "", message: "" });
 
+		const apiURL = process.env.NEXT_PUBLIC_API_URL;
+
 		try {
-			const res = await fetch("/api/contact", {
+			const res = await fetch(`${apiURL}/contacts`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -43,7 +45,7 @@ export default function ContactForm() {
 				type: "success",
 				message: "Message sent successfully! We'll get back to you soon.",
 			});
-			setFormData({ fullName: "", email: "", message: "" });
+			setFormData({ fullName: "", emailAddress: "", message: "" });
 		} catch (error) {
 			setStatus({
 				type: "error",
@@ -99,16 +101,16 @@ export default function ContactForm() {
 
 					<div>
 						<label
-							htmlFor="email"
+							htmlFor="emailAddress"
 							className="block text-sm font-medium text-gray-300 mb-1"
 						>
 							Email
 						</label>
 						<input
 							type="email"
-							id="email"
-							name="email"
-							value={formData.email}
+							id="emailAddress"
+							name="emailAddress"
+							value={formData.emailAddress}
 							onChange={handleChange}
 							required
 							className="w-full px-4 py-2 bg-[#111]/80 border border-[#EF6C00]/20 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#EF6C00] focus:border-transparent transition duration-200"
