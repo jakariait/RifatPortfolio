@@ -33,8 +33,8 @@ mongoose
 
 // Client URL for CORS setup
 const clientUrl = process.env.CLIENT_URL
-  ? process.env.CLIENT_URL.replace(/\/$/, "")
-  : "http://localhost:3000";
+  ? process.env.CLIENT_URL.split(",").map((url) => url.replace(/\/$/, ""))
+  : ["http://localhost:3000"];
 
 // CORS setup
 const corsOptions = {
