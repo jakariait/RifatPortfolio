@@ -3,23 +3,32 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { Editor } from "primereact/editor";
-import { Box, Typography, Chip, Button, Snackbar, Alert, Switch, FormControlLabel } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Chip,
+  Button,
+  Snackbar,
+  Alert,
+  Switch,
+  FormControlLabel,
+} from "@mui/material";
 import axios from "axios";
 import AuthAdminStore from "@/store/AuthAdminStore";
 import ImageComponent from "@/components/ImageComponent";
 
 const CustomTextField = React.memo(
   ({
-     label,
-     value,
-     onChange,
-     required,
-     multiline,
-     rows,
-     placeholder,
-     margin = "normal",
-     onKeyDown,
-   }) => {
+    label,
+    value,
+    onChange,
+    required,
+    multiline,
+    rows,
+    placeholder,
+    margin = "normal",
+    onKeyDown,
+  }) => {
     return (
       <div className={`mb-${margin === "normal" ? "4" : "2"}`}>
         {label && (
@@ -50,7 +59,7 @@ const CustomTextField = React.memo(
         )}
       </div>
     );
-  }
+  },
 );
 
 CustomTextField.displayName = "CustomTextField";
@@ -91,19 +100,22 @@ const EditBlog = () => {
         [field]: e.target.value,
       }));
     },
-    []
+    [],
   );
 
   // Fixed editor change handler with proper condition check
-  const handleEditorChange = useCallback((e) => {
-    // Only update if the editor is ready and the change is from user interaction
-    if (isEditorReady && e.htmlValue !== formData.longDesc) {
-      setFormData((prev) => ({
-        ...prev,
-        longDesc: e.htmlValue || ""
-      }));
-    }
-  }, [isEditorReady, formData.longDesc]);
+  const handleEditorChange = useCallback(
+    (e) => {
+      // Only update if the editor is ready and the change is from user interaction
+      if (isEditorReady && e.htmlValue !== formData.longDesc) {
+        setFormData((prev) => ({
+          ...prev,
+          longDesc: e.htmlValue || "",
+        }));
+      }
+    },
+    [isEditorReady, formData.longDesc],
+  );
 
   const handleDeleteTag = useCallback((tag) => {
     setFormData((prev) => ({
@@ -132,7 +144,7 @@ const EditBlog = () => {
         setTagInput("");
       }
     },
-    [tagInput, formData.searchTags]
+    [tagInput, formData.searchTags],
   );
 
   const handleAddKeyword = useCallback(
@@ -148,7 +160,7 @@ const EditBlog = () => {
         setKeywordInput("");
       }
     },
-    [keywordInput, formData.metaKeywords]
+    [keywordInput, formData.metaKeywords],
   );
 
   useEffect(() => {
@@ -178,7 +190,6 @@ const EditBlog = () => {
           setTimeout(() => {
             setIsEditorReady(true);
           }, 100);
-
         } catch (error) {
           console.error("Error fetching blog:", error);
           setSnackbarMessage("Failed to load blog data");
@@ -211,7 +222,7 @@ const EditBlog = () => {
     submitData.append("isActive", formData.isActive);
     formData.searchTags.forEach((tag) => submitData.append("searchTags", tag));
     formData.metaKeywords.forEach((kw) =>
-      submitData.append("metaKeywords", kw)
+      submitData.append("metaKeywords", kw),
     );
     if (thumbnailImage instanceof File) {
       submitData.append("thumbnailImage", thumbnailImage);
@@ -243,7 +254,10 @@ const EditBlog = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="shadow rounded-lg p-4 xl:container xl:mx-auto">
+    <form
+      onSubmit={handleSubmit}
+      className="shadow rounded-lg p-4 xl:container xl:mx-auto"
+    >
       <Typography variant="h5" className="mb-4">
         Edit Blog
       </Typography>
@@ -268,12 +282,20 @@ const EditBlog = () => {
               control={
                 <Switch
                   checked={formData.isActive}
-                  onChange={(e) => setFormData(prev => ({...prev, isActive: e.target.checked}))}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      isActive: e.target.checked,
+                    }))
+                  }
                   color="primary"
                 />
               }
               label={
-                <Typography variant="subtitle1" color={formData.isActive ? "primary" : "textSecondary"}>
+                <Typography
+                  variant="subtitle1"
+                  color={formData.isActive ? "primary" : "textSecondary"}
+                >
                   {formData.isActive ? "Active" : "Inactive"}
                 </Typography>
               }
