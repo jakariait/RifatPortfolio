@@ -43,7 +43,7 @@ const BlogList = () => {
     severity: "success",
   });
 
-  const token = useAuthAdminStore()
+  const {token} = useAuthAdminStore()
   const apiURL = process.env.NEXT_PUBLIC_API_URL;
 
   const fetchBlogs = async (page = 1) => {
@@ -87,7 +87,7 @@ const BlogList = () => {
 
   const handleConfirmDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5050/api/blog/${selectedBlogId}`, {
+      await axios.delete(`${apiURL}/blog/${selectedBlogId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
