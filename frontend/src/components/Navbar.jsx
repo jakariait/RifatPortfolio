@@ -9,6 +9,7 @@ const menuItems = [
   { name: "Testimonial", path: "/#testimonial" },
   { name: "Pricing", path: "/#pricing" },
   { name: "FAQs", path: "/#faqs" },
+  { name: "Calculator", path: "/calculator" },
   { name: "Blog", path: "/blogs" },
   { name: "Contact Us", path: "/#contact" },
 ];
