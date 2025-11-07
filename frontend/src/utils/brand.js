@@ -1,7 +1,7 @@
 export const getBrandName = () => "Elevate With Rifat";
 
-export const getName = () => "Ridwan H. Rifat";
-export const getTitle = () => "Performance Marketing Specialist";
+export const getName = () => "Ridwan Rifat";
+export const getTitle = () => "Performance Marketing Strategist";
 
 export const getHomePageTitle = () => "Ridwan H. Rifat";
 export const getHomePageDescription = () => "TESS Agency";
