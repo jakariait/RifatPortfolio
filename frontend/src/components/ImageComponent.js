@@ -11,13 +11,30 @@ const ImageComponent = ({
 }) => {
   const [imageSrc, setImageSrc] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
+    setHasError(false);
     if (imageName && process.env.NEXT_PUBLIC_API_URL) {
       const baseUrl = process.env.NEXT_PUBLIC_API_URL.replace("/api", "");
       setImageSrc(`${baseUrl}/uploads/${imageName}`);
+    } else {
+      setIsLoading(false);
+      setHasError(true);
     }
   }, [imageName]);
+
+  if (hasError) {
+    return (
+      <div
+        className={`w-full bg-gray-200 flex items-center justify-center ${className}`}
+        style={{ height: skeletonHeight }}
+      >
+        <p className="text-gray-500">Image not found</p>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -31,7 +48,7 @@ const ImageComponent = ({
           onLoad={() => setIsLoading(false)}
           onError={() => {
             setIsLoading(false);
-            setImageSrc(""); // fallback to empty string on error
+            setHasError(true);
           }}
         />
       )}
