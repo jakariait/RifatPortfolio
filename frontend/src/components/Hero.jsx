@@ -12,17 +12,11 @@ const Hero = () => {
         {/* Left Content */}
         <div className="text-white p-4 flex-1 flex flex-col justify-center gap-10">
           <div>
-            {/*<h1 className="text-[40px] md:text-[70px] text-[#EF6C00] font-bold">*/}
-            {/*  {getName()}*/}
-            {/*</h1>*/}
             <TypeWriter
               text={getName()}
               className="text-[40px] md:text-[70px] text-[#EF6C00] font-bold"
             />
 
-            {/*<h2 className="text-[40px] md:text-[50px] text-gray-50 font-bold leading-tight">*/}
-            {/*  {getTitle()}*/}
-            {/*</h2>*/}
             <TypeWriter
               text={getTitle()}
               className="text-[40px] md:text-[50px] text-gray-50 font-bold leading-tight"
