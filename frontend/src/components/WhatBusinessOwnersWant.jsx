@@ -1,18 +1,22 @@
 import React from "react";
+import AnimatedItem from "@/components/AnimatedItem";
 
 const ServiceCard = ({ title, whatTheyWant, whatIDeliver }) => {
   return (
-    <div className="flex flex-col  p-6 bg-gray-800 text-white rounded-lg shadow-lg hover:shadow-xl transition-all  justify-center">
+    <div className="h-full flex flex-col p-6 bg-gray-800 text-white rounded-lg shadow-lg hover:shadow-xl transition-all">
       <div className="mb-4 flex items-center justify-center flex-col">
         <h3 className="text-2xl text-[#EF6C00] font-semibold">{title}</h3>
       </div>
+
       <div className="mb-2 flex items-center justify-center flex-col">
         <h4 className="font-semibold text-[#EF6C00]">What They Want:</h4>
-        <p className={"text-center"}>{whatTheyWant}</p>
+        <p className="text-center">{whatTheyWant}</p>
       </div>
-      <div className="mt-2 flex items-center justify-center flex-col">
+
+      {/* flex-1 forces spacing balance */}
+      <div className="mt-2 flex-1 flex items-center justify-center flex-col">
         <h4 className="font-semibold text-[#EF6C00]">What I Deliver:</h4>
-        <p className={"text-center"}>{whatIDeliver}</p>
+        <p className="text-center">{whatIDeliver}</p>
       </div>
     </div>
   );
@@ -84,9 +88,11 @@ const WhatBusinessOwnersWant = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 ">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-fr">
           {services.map((service, index) => (
-            <ServiceCard key={index} {...service} />
+            <AnimatedItem key={index} index={index}>
+              <ServiceCard {...service} />
+            </AnimatedItem>
           ))}
         </div>
       </div>

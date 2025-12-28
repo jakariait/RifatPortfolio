@@ -1,5 +1,6 @@
 import React from "react";
 import ContactForm from "@/components/ContactForm";
+import AnimatedItem from "@/components/AnimatedItem";
 
 const CallToAction = () => {
   return (
@@ -7,7 +8,7 @@ const CallToAction = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left side - Content */}
-          <div className="text-center md:text-left ">
+          <AnimatedItem index={0} className="text-center md:text-left ">
             <h2 className="text-3xl md:text-4xl font-bold text-[#EF6C00] mb-4">
               Let&apos;s Make Your Marketing Work Smarter
             </h2>
@@ -37,12 +38,12 @@ const CallToAction = () => {
                 🧾 Request Proposal
               </a>
             </div>
-          </div>
+          </AnimatedItem>
 
           {/* Right side - Form */}
-          <div className="relative">
+          <AnimatedItem index={1} className="relative">
             <ContactForm />
-          </div>
+          </AnimatedItem>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import React from "react";
 import { FaArrowRight, FaArrowDown } from "react-icons/fa";
+import AnimatedItem from "@/components/AnimatedItem";
 
 const steps = [
   {
@@ -47,7 +48,7 @@ const WorkingProcessSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 relative">
           {steps.map((step, index) => (
-            <div key={index} className="relative flex flex-col items-center">
+            <AnimatedItem key={index} index={index} className="relative flex flex-col items-center">
               {/* Step Box */}
               <div className="bg-white text-black p-6 rounded-lg shadow-md w-full h-full">
                 <h3 className="text-lg font-semibold mb-2">
@@ -69,7 +70,7 @@ const WorkingProcessSection = () => {
                   <FaArrowDown className="text-[#EF6C00] text-xl" />
                 </div>
               )}
-            </div>
+            </AnimatedItem>
           ))}
         </div>
       </div>

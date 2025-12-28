@@ -8,6 +8,7 @@ import {
   FaSass,
 } from "react-icons/fa";
 import { Check } from "lucide-react";
+import AnimatedItem from "@/components/AnimatedItem";
 
 const sections = [
   {
@@ -86,8 +87,9 @@ const ToolsSection = () => {
 
         <div className="grid md:grid-cols-2 gap-4">
           {sections.map((section, index) => (
-            <div
+            <AnimatedItem
               key={index}
+              index={index}
               className="bg-gray-50 rounded-lg p-6 shadow hover:shadow-md transition"
             >
               <div className="flex flex-col items-center justify-center">
@@ -102,7 +104,7 @@ const ToolsSection = () => {
                   ))}
                 </ul>
               </div>
-            </div>
+            </AnimatedItem>
           ))}
         </div>
       </div>

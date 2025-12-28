@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import FunnelCalculator from "@/components/FunnelCalculator";
 import ROICalculator from "@/components/ROICalculator";
 import BudgetPlanner from "@/components/BudgetPlanner";
+import AnimatedItem from "@/components/AnimatedItem";
 
 const calculators = {
   funnel: { name: "Funnel Calculator", Component: FunnelCalculator },
@@ -46,7 +47,9 @@ const Page = () => {
         </div>
       </div>
       <div className="py-4">
-        <ActiveComponent />
+        <AnimatedItem key={activeCalculator} index={0}>
+          <ActiveComponent />
+        </AnimatedItem>
       </div>
     </div>
   );

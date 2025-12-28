@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import AnimatedItem from "@/components/AnimatedItem";
 
 const FaqAccordion = () => {
   const [faqs, setFaqs] = useState([]);
@@ -31,7 +32,7 @@ const FaqAccordion = () => {
         </h2>
         <div className="space-y-4 md:w-4xl mx-auto text-gray-100">
           {faqs.map((faq, index) => (
-            <div key={faq._id} className="border border-gray-700 rounded-lg">
+            <AnimatedItem key={faq._id} index={index} className="border border-gray-700 rounded-lg">
               <button
                 className="w-full text-left px-4 py-3 flex justify-between cursor-pointer items-center focus:outline-none"
                 onClick={() => toggle(index)}
@@ -50,7 +51,7 @@ const FaqAccordion = () => {
               >
                 <p className="text-gray-300">{faq.answer}</p>
               </div>
-            </div>
+            </AnimatedItem>
           ))}
         </div>
       </div>

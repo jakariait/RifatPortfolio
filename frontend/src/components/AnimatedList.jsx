@@ -1,5 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
+
+import AnimatedItem from "./AnimatedItem";
 
 export default function AnimatedList() {
   const listItems = [
@@ -15,23 +16,19 @@ export default function AnimatedList() {
       "Built systems, not just campaigns — with a deep focus on creative testing, custom audiences, and funnel-based strategies.",
   ];
   return (
-    <motion.ul className="space-y-4 mt-6 text-gray-300 list-disc pl-6">
+    <ul className="space-y-4 mt-6 text-gray-300 list-disc pl-6">
       {listItems.map((item, index) => {
-        const fromLeft = index % 2 === 0;
-
         return (
-          <motion.li
+          <AnimatedItem
+            as="li"
             key={index}
-            initial={{ opacity: 0, x: fromLeft ? -60 : 60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, amount: 0.2 }}
+            index={index}
             className="text-lg md:text-xl"
           >
             {item}
-          </motion.li>
+          </AnimatedItem>
         );
       })}
-    </motion.ul>
+    </ul>
   );
 }

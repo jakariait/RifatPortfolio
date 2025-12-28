@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import AnimatedItem from "@/components/AnimatedItem";
 
 const plans = {
   monthly: [
@@ -99,7 +100,7 @@ const PricingCard = ({
 }) => (
   <section
     id={"pricing"}
-    className={`scroll-mt-96 flex flex-col justify-between p-6 rounded-xl border shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer ${
+    className={`h-full flex flex-col justify-between p-6 rounded-xl border shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer ${
       isHighlighted
         ? "bg-blue-950 border-blue-600 text-white"
         : "bg-gray-800 border-gray-700 text-gray-200"
@@ -173,9 +174,11 @@ const PricingSection = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid gap-6 w-full md:grid-cols-3 ">
-          {plans[activePlanType].map((plan) => (
-            <PricingCard key={plan.title} {...plan} />
+        <div className="grid gap-6 w-full md:grid-cols-3 auto-rows-fr">
+          {plans[activePlanType].map((plan, index) => (
+            <AnimatedItem key={plan.title} index={index}>
+              <PricingCard {...plan} />
+            </AnimatedItem>
           ))}
         </div>
 
