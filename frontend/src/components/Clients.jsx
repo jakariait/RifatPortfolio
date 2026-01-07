@@ -1,30 +1,32 @@
-"use client";
-import React, { useEffect, useState } from "react";
 import ImageComponent from "@/components/ImageComponent";
 import AnimatedItem from "@/components/AnimatedItem";
 
-const Clients = () => {
+async function getBrands() {
   const apiURL = process.env.NEXT_PUBLIC_API_URL;
 
-  const [brands, setBrands] = useState([]);
+  const res = await fetch(
+    `${apiURL}/getallcarousel`,
+    { cache: "no-store" }, // or { next: { revalidate: 60 } }
+  );
 
-  useEffect(() => {
-    fetch(`${apiURL}/getallcarousel`)
-      .then((res) => res.json())
-      .then((data) => {
-        setBrands(data);
-      })
-      .catch((err) => console.error("Fetch error:", err));
-  }, []);
+  if (!res.ok) {
+    throw new Error("Failed to fetch brands");
+  }
+
+  return res.json();
+}
+
+const Clients = async () => {
+  const brands = await getBrands();
 
   return (
     <div
       id="testimonial"
       className="bg-black pt-10 p-4 scroll-mt-20"
       style={{
-        backgroundImage: "url('/certificate-bg.png')", // Replace with the path to your background image
+        backgroundImage: "url('/certificate-bg.png')",
         backgroundSize: "cover",
-        backgroundPosition: "cover",
+        backgroundPosition: "center",
       }}
     >
       <div className="xl:container xl:mx-auto text-center">
@@ -47,6 +49,7 @@ const Clients = () => {
             </AnimatedItem>
           ))}
         </div>
+
         <a
           href="https://wa.me/8801307217573"
           target="_blank"
