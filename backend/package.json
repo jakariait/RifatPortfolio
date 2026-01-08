@@ -5,7 +5,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean-unused-images": "node scripts/cleanUnusedImages.js",
-    "admin-indexing": "node scripts/fixAdminEmailIndex.js",
     "nodemon": "nodemon index.js"
   },
   "keywords": [],
