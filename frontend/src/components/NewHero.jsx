@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { getName } from "@/utils/brand";
 import SocialIcon from "@/components/SocialIcon";
 import { motion } from "framer-motion";
@@ -33,9 +33,68 @@ const rightVariants = {
   },
 };
 
+// Starfield Component
+const Starfield = () => {
+  const [stars, setStars] = useState([]);
+
+  useEffect(() => {
+    const generateStars = () => {
+      const starArray = [];
+      const starCount = 150;
+
+      for (let i = 0; i < starCount; i++) {
+        starArray.push({
+          id: i,
+          x: Math.random() * 100,
+          y: Math.random() * 100,
+          size: Math.random() * 2 + 0.5,
+          duration: Math.random() * 3 + 2,
+          delay: Math.random() * 2,
+          opacity: Math.random() * 0.7 + 0.3,
+        });
+      }
+      setStars(starArray);
+    };
+
+    generateStars();
+  }, []);
+
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      {stars.map((star) => (
+        <motion.div
+          key={star.id}
+          className="absolute rounded-full bg-white"
+          style={{
+            left: `${star.x}%`,
+            top: `${star.y}%`,
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+          }}
+          animate={{
+            opacity: [star.opacity, 1, star.opacity],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: star.duration,
+            repeat: Infinity,
+            delay: star.delay,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
 const NewHero = () => {
   return (
-    <div id="about" className="bg-black animated-bg scroll-mt-10 py-10 px-4 overflow-hidden">
+    <div
+      id="about"
+      className="bg-black relative animated-bg scroll-mt-10 py-10 px-4 overflow-hidden"
+    >
+      {/* Starfield Background */}
+      <Starfield />
       <div
         className={
           "grid  grid-cols-1 xl:container  xl:mx-auto md:grid-cols-3 gap-5"
