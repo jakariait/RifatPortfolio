@@ -38,7 +38,7 @@ const NewHero = () => {
     <div id="about" className="bg-black animated-bg scroll-mt-10 py-10 px-4">
       <div
         className={
-          "grid  grid-cols-1   max-w-5xl mx-auto md:grid-cols-3 gap-5"
+          "grid  grid-cols-1 xl:container  xl:mx-auto md:grid-cols-3 gap-5"
         }
       >
         <motion.div
