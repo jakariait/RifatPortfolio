@@ -4,7 +4,6 @@ const path = require("path");
 
 const contactController = require("../controllers/ContactController");
 const AdminController = require("../controllers/AdminController");
-
 const FaqController = require("../controllers/FaqController");
 const BrandController = require("../controllers/BrandController");
 const ResultController = require("../controllers/ResultController");
@@ -70,7 +69,7 @@ router.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes for Contact Us Form
 router.post("/contacts", contactController.createContact);
-router.get("/contacts", adminProtect,  contactController.getAllContacts);
+router.get("/contacts", adminProtect, contactController.getAllContacts);
 router.get("/contacts/:id", adminProtect, contactController.getContactById);
 router.put("/contacts/:id", adminProtect, contactController.updateContact);
 router.delete("/contacts/:id", adminProtect, contactController.deleteContact);
