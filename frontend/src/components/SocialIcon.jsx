@@ -1,4 +1,10 @@
-import { FaLinkedin, FaFacebookF, FaYoutube, FaTiktok, FaInstagram } from "react-icons/fa";
+import {
+  FaLinkedin,
+  FaFacebookF,
+  FaYoutube,
+  FaTiktok,
+  FaInstagram,
+} from "react-icons/fa";
 
 const socialMediaLinks = [
   {
@@ -31,7 +37,6 @@ const socialMediaLinks = [
     icon: FaTiktok,
     iconColor: "white", // TikTok brand color for the icon
   },
-
 ];
 
 const SocialLinks = () => {
@@ -43,7 +48,7 @@ const SocialLinks = () => {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 rounded-full shadow-lg shadow-[#EF6C00]"
+          className="p-2 rounded-full hover:scale-105 transition-all duration-300  shadow-lg shadow-[#EF6C00]"
         >
           <link.icon style={{ color: link.iconColor }} />
         </a>

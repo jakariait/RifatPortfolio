@@ -49,10 +49,10 @@ const services = [
 
 const Services = () => {
   return (
-    <div className="bg-[#1C2124] text-white px-4 pt-35 md:pt-30 pb-10 pt">
+    <div className="bg-[#1C2124] text-white px-4 py-10">
       <div className="xl:container xl:mx-auto text-center">
         <h2 className="text-xl md:text-2xl font-bold text-[#EF6C00] mb-10">
-          I Can Help You With:
+          How I Drive Sustainable Growth
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

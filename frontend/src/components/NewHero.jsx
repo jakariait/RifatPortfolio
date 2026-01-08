@@ -91,7 +91,7 @@ const NewHero = () => {
   return (
     <div
       id="about"
-      className="bg-black relative animated-bg scroll-mt-10 py-10 px-4 overflow-hidden"
+      className="bg-black relative animated-bg scroll-mt-10 py-20 px-4 overflow-hidden"
     >
       {/* Starfield Background */}
       <Starfield />
@@ -107,7 +107,7 @@ const NewHero = () => {
           viewport={{ once: true, amount: 0.3 }}
           className={"flex flex-col gap-2 col-span-2 order-last md:order-none"}
         >
-          <h1 className="text-3xl text-white font-bold">Hello It's Me</h1>
+          <h1 className="text-2xl text-white font-bold">Hello It's Me</h1>
 
           <h1 className="text-5xl font-bold bg-gradient-to-r from-[#EF6C00] via-[#FF9F1C] to-[#FFD166] bg-clip-text text-transparent">
             {getName()}
