@@ -1,3 +1,6 @@
+"use client";
+import { motion } from "framer-motion";
+
 export default function SustainableGrowth() {
   const strategies = [
     {
@@ -78,7 +81,13 @@ export default function SustainableGrowth() {
 
       <div className="xl:container xl:mx-auto relative z-10">
         {/* Header Section */}
-        <div className="text-center mb-7">
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
+          viewport={{ once: true }}
+          className="text-center mb-7"
+        >
           <div className="inline-block ">
             <span className="text-white text-sm font-semibold tracking-[0.3em] uppercase border border-[#EF6C00] border-opacity-30 px-6 py-2 rounded-full bg-[#EF6C00] bg-opacity-5 backdrop-blur-sm">
               My Process
@@ -94,13 +103,17 @@ export default function SustainableGrowth() {
             A proven framework that transforms marketing spend into measurable
             business results
           </p>
-        </div>
+        </motion.div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-20">
           {strategies.map((strategy, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              viewport={{ once: true }}
               className="group relative bg-[#0f0f0f] border border-[#1f1f1f] rounded-3xl p-10 transition-all duration-700 hover:border-[#EF6C00] hover:border-opacity-50 hover:-translate-y-2 overflow-hidden"
             >
               {/* Glow effect on hover */}
@@ -153,12 +166,18 @@ export default function SustainableGrowth() {
 
               {/* Bottom accent line */}
               <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#EF6C00] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Premium CTA Section */}
-        <div className="relative -mt-10 max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
+          viewport={{ once: true }}
+          className="relative -mt-10 max-w-3xl mx-auto"
+        >
           <div className="bg-gradient-to-r from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f] border border-[#2a2a2a] rounded-3xl p-12 text-center">
             <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">
               Ready to Scale Your Business?
@@ -177,7 +196,7 @@ export default function SustainableGrowth() {
               <div className="absolute inset-0 bg-gradient-to-r from-[#FF8F00] to-[#EF6C00] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
