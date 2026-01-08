@@ -35,7 +35,7 @@ const rightVariants = {
 
 const NewHero = () => {
   return (
-    <div id="about" className="bg-black animated-bg scroll-mt-10 py-10 px-4">
+    <div id="about" className="bg-black animated-bg scroll-mt-10 py-10 px-4 overflow-hidden">
       <div
         className={
           "grid  grid-cols-1 xl:container  xl:mx-auto md:grid-cols-3 gap-5"
@@ -67,7 +67,11 @@ const NewHero = () => {
             <GradientChips />
             <Stats />
 
-            <div className={"grid md:grid-cols-2 gap-4 items-center justify-center"}>
+            <div
+              className={
+                "grid md:grid-cols-2 gap-4 items-center justify-center"
+              }
+            >
               <a
                 href="https://wa.me/8801307217573"
                 target="_blank"
