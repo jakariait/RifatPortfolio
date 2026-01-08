@@ -1,4 +1,3 @@
-import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Clients from "@/components/Clients";
 import Testimonial from "@/components/Testimonials";
@@ -9,13 +8,12 @@ import FaqAccordion from "@/components/FaqAccordion";
 import PricingPlans from "@/components/PricingSection";
 import WhatBusinessOwnersWant from "@/components/WhatBusinessOwnersWant";
 import CallToAction from "@/components/CallToAction";
-import Stats from "@/components/Stats";
+import NewHero from "@/components/NewHero";
 
 export default function Home() {
   return (
     <div>
-      <Hero />
-      <Stats />
+      <NewHero />
       <Services />
       <Clients />
       <Testimonial />
