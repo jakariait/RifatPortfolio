@@ -7,6 +7,7 @@ import PricingPlans from "@/components/PricingSection";
 import CallToAction from "@/components/CallToAction";
 import NewHero from "@/components/NewHero";
 import SustainableGrowth from "@/components/SustainableGrowth";
+import CaseStudy from "@/components/CaseStudy";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Clients />
       <Testimonial />
       <Results />
+      <CaseStudy />
       <ToolsSection />
       <PricingPlans />
       <FaqAccordion />

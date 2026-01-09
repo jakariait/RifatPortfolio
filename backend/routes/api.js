@@ -9,6 +9,7 @@ const BrandController = require("../controllers/BrandController");
 const ResultController = require("../controllers/ResultController");
 const blogController = require("../controllers/BlogController");
 const TestimonialController = require("../controllers/TestimonialController");
+const CaseStudyController = require("../controllers/CaseStudyController");
 
 // Admin
 const { adminProtect } = require("../middlewares/authAdminMiddleware");
@@ -60,6 +61,10 @@ const upload = multer({ storage }).fields([
   },
   {
     name: "userImage",
+    maxCount: 1,
+  },
+  {
+    name: "brandLogo",
     maxCount: 1,
   },
 ]);
@@ -146,5 +151,27 @@ router.get("/blog/slug/:slug", blogController.getBlogBySlug);
 router.get("/blog/:id", blogController.getBlogById);
 router.patch("/blog/:id", upload, adminProtect, blogController.updateBlog);
 router.delete("/blog/:id", adminProtect, blogController.deleteBlog);
+
+// Routes for Case Studies
+router.post(
+  "/casestudy",
+  upload,
+  // adminProtect,
+  CaseStudyController.createCaseStudy,
+);
+
+router.get("/casestudy", CaseStudyController.getAllCaseStudies);
+router.get("/casestudy/:slug", CaseStudyController.getCaseStudyBySlug);
+router.put(
+  "/casestudy/:slug",
+  upload,
+  adminProtect,
+  CaseStudyController.updateCaseStudyBySlug,
+);
+router.delete(
+  "/casestudy/:slug",
+  // adminProtect,
+  CaseStudyController.deleteCaseStudyBySlug,
+);
 
 module.exports = router;
