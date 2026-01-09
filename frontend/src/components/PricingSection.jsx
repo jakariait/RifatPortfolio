@@ -100,7 +100,7 @@ const PricingCard = ({
 }) => (
   <section
     id={"pricing"}
-    className={`h-full flex flex-col justify-between p-6 rounded-xl border shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer ${
+    className={`h-full scroll-mt-80 flex flex-col justify-between p-6 rounded-xl border shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer ${
       isHighlighted
         ? "bg-blue-950 border-blue-600 text-white"
         : "bg-gray-800 border-gray-700 text-gray-200"
