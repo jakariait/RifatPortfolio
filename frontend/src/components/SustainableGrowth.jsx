@@ -176,10 +176,10 @@ export default function SustainableGrowth() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeInOut" }}
           viewport={{ once: true }}
-          className="relative -mt-10 max-w-3xl mx-auto"
+          className="relative -mt-10 max-w-2xl mx-auto"
         >
-          <div className="bg-gradient-to-r from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f] border border-[#2a2a2a] rounded-3xl p-12 text-center">
-            <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">
+          <div className="bg-gradient-to-r from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f] border border-[#2a2a2a] rounded-3xl py-10 text-center">
+            <h2 className="text-white text-2xl md:text-3xl font-bold mb-4">
               Ready to Scale Your Business?
             </h2>
             <p className="text-[#a0a0a0] text-lg mb-8 max-w-2xl mx-auto">
@@ -190,7 +190,7 @@ export default function SustainableGrowth() {
               href="https://wa.me/8801307217573"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative px-10 py-5 bg-[#EF6C00] text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0_20px_60px_rgba(239,108,0,0.4)] hover:-translate-y-1 inline-block"
+              className="group relative px-5 py-5 bg-[#EF6C00] text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0_20px_60px_rgba(239,108,0,0.4)] hover:-translate-y-1 inline-block"
             >
               <span className="relative z-10">Schedule a Consultation</span>
               <div className="absolute inset-0 bg-gradient-to-r from-[#FF8F00] to-[#EF6C00] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
