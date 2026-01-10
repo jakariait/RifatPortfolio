@@ -19,7 +19,7 @@ const Results = () => {
   }, []);
 
   return (
-    <div>
+    <div id={"results"}>
       <div className="md:flex justify-center hidden bg-[#09122C]">
         <ProductGallery images={images} />
       </div>

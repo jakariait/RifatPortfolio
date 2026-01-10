@@ -3,10 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const menuItems = [
   { name: "About Me", path: "/#about" },
   { name: "Testimonial", path: "/#testimonial" },
+  { name: "Case Study", path: "/#case-study" },
   { name: "Pricing", path: "/#pricing" },
   { name: "FAQs", path: "/#faqs" },
   { name: "Calculator", path: "/calculator" },
@@ -16,6 +18,25 @@ const menuItems = [
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const handleLinkClick = (e, path) => {
+    setMenuOpen(false);
+    if (path.startsWith("/#") && pathname === "/") {
+      e.preventDefault();
+      const targetId = path.substring(2);
+      const targetElement = document.getElementById(targetId);
+      const navbar = document.querySelector("nav"); // Assuming 'nav' is your navbar element
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
+
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - navbarHeight,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
 
   return (
     <nav className="bg-[#1C2124] shadow-md px-4 sticky top-0 z-50">
@@ -33,12 +54,14 @@ const Navbar = () => {
         <ul className="hidden md:flex space-x-6 text-white font-medium">
           {menuItems.map((item, index) => (
             <li key={index}>
-              <a
+              <Link
                 href={item.path}
+                scroll={!item.path.startsWith("/#")}
+                onClick={(e) => handleLinkClick(e, item.path)}
                 className="hover:text-blue-500 transition-colors"
               >
                 {item.name}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -65,13 +88,14 @@ const Navbar = () => {
         <ul className="mt-4 space-y-4 text-white text-center font-medium bg-[#1C2124] p-4 rounded-md">
           {menuItems.map((item, index) => (
             <li key={index}>
-              <a
+              <Link
                 href={item.path}
+                scroll={!item.path.startsWith("/#")}
+                onClick={(e) => handleLinkClick(e, item.path)}
                 className="block hover:text-blue-500 transition-colors"
-                onClick={() => setMenuOpen(false)}
               >
                 {item.name}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

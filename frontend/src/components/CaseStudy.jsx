@@ -74,7 +74,7 @@ const CaseStudy = () => {
   }
 
   return (
-    <div className="bg-[#0a0a0a] py-10 px-5 relative overflow-hidden">
+    <div id={"case-study"} className="bg-[#0a0a0a] py-10 px-5 relative overflow-hidden">
       {/* Premium gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#EF6C00] via-transparent to-transparent opacity-5"></div>
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#EF6C00] rounded-full opacity-10 blur-[120px]"></div>

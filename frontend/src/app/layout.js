@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ScrollHandler from "@/components/ScrollHandler"; // Import the new component
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,10 +45,12 @@ export default function RootLayout({ children }) {
               <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5NCF5TJT"
               height="0" width="0" style="display:none;visibility:hidden"></iframe>
             `,
-      }}
-    />
-    {children}
+        }}
+      />
+      {children}
+      <ScrollHandler /> {/* Render the new component here */}
     </body>
     </html>
   );
 }
+
