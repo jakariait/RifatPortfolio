@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
@@ -17,9 +16,11 @@ import {
   TableRow,
   Paper,
   IconButton,
+  TablePagination,
 } from "@mui/material";
 import { Edit, Delete } from "@mui/icons-material";
 import useAuthAdminStore from "@/store/AuthAdminStore";
+import {Editor} from "primereact/editor";
 
 const CaseStudyAdmin = () => {
   const [caseStudies, setCaseStudies] = useState([]);
@@ -37,21 +38,27 @@ const CaseStudyAdmin = () => {
     description: "",
     brandLogo: null,
   });
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const {token} = useAuthAdminStore()
-
+  const { token } = useAuthAdminStore();
 
   const api = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
 
   useEffect(() => {
-    fetchCaseStudies();
-  }, []);
+    if (token) {
+      fetchCaseStudies();
+    }
+  }, [token]);
 
   const fetchCaseStudies = async () => {
     try {
-      const response = await api.get("/casestudy");
+      const response = await api.get(`/casestudy`);
       setCaseStudies(response.data.data);
     } catch (error) {
       console.error("Error fetching case studies:", error);
@@ -102,8 +109,12 @@ const CaseStudyAdmin = () => {
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    if (e && e.target && e.target.name === 'description') {
+      setFormData({ ...formData, description: e.htmlValue });
+    } else {
+      const { name, value } = e.target;
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleFileChange = (e) => {
@@ -147,8 +158,17 @@ const CaseStudyAdmin = () => {
     }
   };
 
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
   return (
-    <div>
+    <div className={"xl:container xl:mx-auto p-4"}>
       <Button variant="contained" onClick={handleClickOpen} sx={{ mb: 2 }}>
         Add New Case Study
       </Button>
@@ -231,18 +251,13 @@ const CaseStudyAdmin = () => {
               value={formData.keyResults}
               onChange={handleChange}
             />
-            <TextField
-              margin="dense"
-              name="description"
-              label="Description"
-              type="text"
-              fullWidth
-              multiline
-              rows={4}
-              variant="outlined"
+            <Editor
+              // ref={editorRef}
               value={formData.description}
-              onChange={handleChange}
+              onTextChange={(e) => handleChange({ target: { name: 'description' }, htmlValue: e.htmlValue })}
+              style={{ height: "320px" }}
             />
+
             <Button variant="contained" component="label" sx={{ mt: 2 }}>
               Upload Brand Logo
               <input
@@ -272,23 +287,34 @@ const CaseStudyAdmin = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {caseStudies.map((study) => (
-              <TableRow key={study.slug}>
-                <TableCell>{study.title}</TableCell>
-                <TableCell>{study.industry}</TableCell>
-                <TableCell>{study.brandTitle}</TableCell>
-                <TableCell>
-                  <IconButton onClick={() => handleEditClick(study.slug)}>
-                    <Edit />
-                  </IconButton>
-                  <IconButton onClick={() => handleDelete(study.slug)}>
-                    <Delete />
-                  </IconButton>
-                </TableCell>
-              </TableRow>
-            ))}
+            {caseStudies
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((study) => (
+                <TableRow key={study.slug}>
+                  <TableCell>{study.title}</TableCell>
+                  <TableCell>{study.industry}</TableCell>
+                  <TableCell>{study.brandTitle}</TableCell>
+                  <TableCell>
+                    <IconButton onClick={() => handleEditClick(study.slug)}>
+                      <Edit />
+                    </IconButton>
+                    <IconButton onClick={() => handleDelete(study.slug)}>
+                      <Delete />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={caseStudies.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
       </TableContainer>
     </div>
   );
