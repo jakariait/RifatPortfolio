@@ -16,6 +16,7 @@ const AdminHeader = () => {
   const menuItems = [
     { name: "Dashboard", path: "/admin/dashboard" },
     { name: "Blogs", path: "/admin/dashboard/blogs" },
+    { name: "Case Study", path: "/admin/dashboard/casestudies" },
     { name: "Brands", path: "/admin/dashboard/brands" },
     { name: "Results", path: "/admin/dashboard/results" },
     { name: "Testimonial", path: "/admin/dashboard/testimonial" },
@@ -49,13 +50,13 @@ const AdminHeader = () => {
       {/* Header Bar */}
       <header className="bg-white text-gray-800 border-b border-gray-200 flex items-center justify-between px-4 py-3 shadow-sm">
         {/* Left - Brand */}
-        <div className="flex items-center space-x-3">
-          <Link href="/">
-            <h1 className="text-lg font-bold text-gray-900">
-              {getBrandName()}
-            </h1>
-          </Link>
-        </div>
+        {/*<div className="flex items-center space-x-3">*/}
+        {/*  <Link href="/">*/}
+        {/*    <h1 className="text-lg font-bold text-gray-900">*/}
+        {/*      {getBrandName()}*/}
+        {/*    </h1>*/}
+        {/*  </Link>*/}
+        {/*</div>*/}
 
         <div className="md:flex items-center space-x-2 hidden text-gray-600">
           <span>{adminName}</span>

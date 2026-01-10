@@ -17,10 +17,13 @@ import {
   Paper,
   IconButton,
   TablePagination,
+  Snackbar,
+  Alert,
+  DialogContentText,
 } from "@mui/material";
 import { Edit, Delete } from "@mui/icons-material";
 import useAuthAdminStore from "@/store/AuthAdminStore";
-import {Editor} from "primereact/editor";
+import { Editor } from "primereact/editor";
 
 const CaseStudyAdmin = () => {
   const [caseStudies, setCaseStudies] = useState([]);
@@ -40,6 +43,11 @@ const CaseStudyAdmin = () => {
   });
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
+  const [slugToDelete, setSlugToDelete] = useState(null);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
 
   const { token } = useAuthAdminStore();
 
@@ -109,7 +117,7 @@ const CaseStudyAdmin = () => {
   };
 
   const handleChange = (e) => {
-    if (e && e.target && e.target.name === 'description') {
+    if (e && e.target && e.target.name === "description") {
       setFormData({ ...formData, description: e.htmlValue });
     } else {
       const { name, value } = e.target;
@@ -135,27 +143,47 @@ const CaseStudyAdmin = () => {
         await api.put(`/casestudy/${currentSlug}`, submissionData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
+        setSnackbarMessage("Case study updated successfully!");
       } else {
         await api.post("/casestudy", submissionData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
+        setSnackbarMessage("Case study created successfully!");
       }
+      setSnackbarSeverity("success");
+      setSnackbarOpen(true);
       fetchCaseStudies();
       handleClose();
     } catch (error) {
       console.error("Error submitting form:", error);
+      setSnackbarMessage("Error submitting form.");
+      setSnackbarSeverity("error");
+      setSnackbarOpen(true);
     }
   };
 
-  const handleDelete = async (slug) => {
-    if (window.confirm("Are you sure you want to delete this case study?")) {
+  const handleDeleteClick = (slug) => {
+    setSlugToDelete(slug);
+    setDeleteConfirmOpen(true);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (slugToDelete) {
       try {
-        await api.delete(`/casestudy/${slug}`);
+        await api.delete(`/casestudy/${slugToDelete}`);
         fetchCaseStudies();
+        setSnackbarMessage("Case study deleted successfully!");
+        setSnackbarSeverity("success");
+        setSnackbarOpen(true);
       } catch (error) {
         console.error("Error deleting case study:", error);
+        setSnackbarMessage("Error deleting case study.");
+        setSnackbarSeverity("error");
+        setSnackbarOpen(true);
       }
     }
+    setDeleteConfirmOpen(false);
+    setSlugToDelete(null);
   };
 
   const handleChangePage = (event, newPage) => {
@@ -165,6 +193,13 @@ const CaseStudyAdmin = () => {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbarOpen(false);
   };
 
   return (
@@ -254,7 +289,12 @@ const CaseStudyAdmin = () => {
             <Editor
               // ref={editorRef}
               value={formData.description}
-              onTextChange={(e) => handleChange({ target: { name: 'description' }, htmlValue: e.htmlValue })}
+              onTextChange={(e) =>
+                handleChange({
+                  target: { name: "description" },
+                  htmlValue: e.htmlValue,
+                })
+              }
               style={{ height: "320px" }}
             />
 
@@ -274,6 +314,25 @@ const CaseStudyAdmin = () => {
             <Button type="submit">{isEditing ? "Update" : "Create"}</Button>
           </DialogActions>
         </form>
+      </Dialog>
+
+      <Dialog
+        open={deleteConfirmOpen}
+        onClose={() => setDeleteConfirmOpen(false)}
+      >
+        <DialogTitle>Confirm Delete</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Are you sure you want to delete this case study? This action cannot
+            be undone.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setDeleteConfirmOpen(false)}>Cancel</Button>
+          <Button onClick={handleDeleteConfirm} color="error">
+            Delete
+          </Button>
+        </DialogActions>
       </Dialog>
 
       <TableContainer component={Paper}>
@@ -298,7 +357,7 @@ const CaseStudyAdmin = () => {
                     <IconButton onClick={() => handleEditClick(study.slug)}>
                       <Edit />
                     </IconButton>
-                    <IconButton onClick={() => handleDelete(study.slug)}>
+                    <IconButton onClick={() => handleDeleteClick(study.slug)}>
                       <Delete />
                     </IconButton>
                   </TableCell>
@@ -316,6 +375,21 @@ const CaseStudyAdmin = () => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </TableContainer>
+
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity={snackbarSeverity}
+          sx={{ width: "100%" }}
+        >
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
