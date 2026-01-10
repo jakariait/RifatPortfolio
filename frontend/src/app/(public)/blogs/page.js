@@ -14,7 +14,6 @@ export async function generateMetadata({ searchParams }) {
   };
 }
 
-
 export default async function BlogsPage({ searchParams }) {
   // Get page from query params, default to 1
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -34,14 +33,13 @@ export default async function BlogsPage({ searchParams }) {
       throw new Error("Failed to fetch blogs");
     }
 
-
     const data = await res.json();
     const blogs = data.data || [];
     const totalPages = data.totalPages || 1;
 
     if (blogs.length === 0) {
       return (
-        <div className="max-w-4xl mx-auto p-4 text-center">
+        <div className="max-w-4xl mx-auto p-4 h-screen flex items-center justify-center text-center">
           <p className="text-gray-600 text-lg">No blogs found.</p>
         </div>
       );
@@ -49,7 +47,9 @@ export default async function BlogsPage({ searchParams }) {
 
     return (
       <div className="xl:container xl:mx-auto   p-6">
-        <h1 className="text-3xl font-bold mb-6 text-center">Stay Informed — Read Our Blogs</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center">
+          Stay Informed — Read Our Blogs
+        </h1>
 
         <div className="grid grid-cols-3  gap-6 mb-6">
           {blogs.map((blog) => (

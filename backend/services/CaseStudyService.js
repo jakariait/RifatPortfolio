@@ -8,7 +8,7 @@ const createCaseStudy = async (data) => {
 };
 
 const getAllCaseStudies = async () => {
-  return CaseStudyModel.find().select("-brandTitle -brandWebsite -founder -businessStarted -description");
+  return CaseStudyModel.find().select(" -brandWebsite  -businessStarted -description");
 };
 
 const getCaseStudyBySlug = async (slug) => {

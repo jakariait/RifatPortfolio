@@ -30,7 +30,7 @@ export default function Page({ params }) {
         <div className="text-center">
           <h1 className="text-2xl font-bold">Case Study Not Found</h1>
           <p className="text-gray-400">
-            Sorry, we couldn&#39;t find the case study you&#39;re looking for.
+            Sorry, we could&#39;t find the case study you&#39;re looking for.
           </p>
         </div>
       </div>

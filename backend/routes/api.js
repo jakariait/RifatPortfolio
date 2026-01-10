@@ -170,7 +170,7 @@ router.put(
 );
 router.delete(
   "/casestudy/:slug",
-  // adminProtect,
+  adminProtect,
   CaseStudyController.deleteCaseStudyBySlug,
 );
 
