@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import ImageComponent from "@/components/ImageComponent";
+import { ChartNoAxesCombined } from "lucide-react";
 
 // Fetch data on the client
 async function getCaseStudies() {
@@ -154,9 +155,18 @@ const CaseStudy = () => {
                   </h3>
                 </div>
 
-                <p className="text-white leading-relaxed mb-8 text-base">
-                  {caseStudy.keyResults}
-                </p>
+                {caseStudy.keyResults && (
+                  <div className={"flex flex-col gap-4"}>
+                    <div className={"text-white flex items-center gap-4"}>
+                      <ChartNoAxesCombined />
+                      <h2>Key Result</h2>
+                    </div>
+
+                    <p className="text-white leading-relaxed mb-8 text-base">
+                      {caseStudy.keyResults}
+                    </p>
+                  </div>
+                )}
 
                 <Link href={`/casestudies/${caseStudy.slug}`}>
                   <div className="group relative inline-block text-sm font-semibold text-white">
