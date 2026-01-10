@@ -132,11 +132,16 @@ const CaseStudyAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submissionData = new FormData();
-    for (const key in formData) {
-      if (formData[key]) {
-        submissionData.append(key, formData[key]);
+    Object.keys(formData).forEach((key) => {
+      const value = formData[key];
+      if (key === "brandLogo") {
+        if (value) {
+          submissionData.append(key, value);
+        }
+      } else {
+        submissionData.append(key, value ?? "");
       }
-    }
+    });
 
     try {
       if (isEditing) {
