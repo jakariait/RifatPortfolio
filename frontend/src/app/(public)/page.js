@@ -1,7 +1,6 @@
 import Clients from "@/components/Clients";
 import Testimonial from "@/components/Testimonials";
 import ToolsSection from "@/components/ToolsSection";
-import Results from "@/components/Results";
 import FaqAccordion from "@/components/FaqAccordion";
 import PricingPlans from "@/components/PricingSection";
 import CallToAction from "@/components/CallToAction";
@@ -11,12 +10,11 @@ import CaseStudy from "@/components/CaseStudy";
 
 export default function Home() {
   return (
-    <div>
+    <div className="overflow-hidden">
       <NewHero />
       <SustainableGrowth/>
       <Clients />
       <Testimonial />
-      <Results />
       <CaseStudy />
       <ToolsSection />
       <PricingPlans />
