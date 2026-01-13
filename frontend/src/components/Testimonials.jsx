@@ -21,7 +21,15 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <div id={"testimonial"} className="bg-[#1C2124] p-4 pt-10 pb-10 scroll-mt-20">
+    <div
+      id={"testimonial"}
+      className="bg-[#0a0a0a] relative p-4 pt-10 pb-10 scroll-mt-20"
+    >
+      {/* Premium gradient overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#EF6C00] via-transparent to-transparent opacity-5"></div>
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#EF6C00] rounded-full opacity-10 blur-[120px]"></div>
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#EF6C00] rounded-full opacity-10 blur-[120px]"></div>
+
       <div className="xl:container xl:mx-auto text-center">
         <h2 className="text-xl md:text-2xl font-bold text-[#EF6C00] mb-10">
           What Clients Say:

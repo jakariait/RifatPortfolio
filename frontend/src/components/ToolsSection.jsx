@@ -18,20 +18,20 @@ import geminiIcon from "../../public/Google_Gemini_icon_2025.svg";
 
 const ToolsSection = () => {
   const images = [
-    { src: metaIcon, name: "Meta Ads", width: 100, height: 100 },
-    { src: googleIcon, name: "Google Ads", width: 100, height: 100 },
-    { src: tiktokIcon, name: "TikTok Ads", width: 100, height: 100 },
-    { src: gtmIcon, name: "Google Tag Manager", width: 100, height: 100 },
-    { src: analyticsIcon, name: "Google Analytics", width: 90, height: 90 },
-    { src: shopifyIcon, name: "Shopify", width: 100, height: 100 },
-    { src: wordpressIcon, name: "Wordpress", width: 100, height: 100 },
-    { src: canvaIcon, name: "Canva", width: 100, height: 100 },
-    { src: chatgptIcon, name: "Chat GPT", width: 100, height: 100 },
-    { src: geminiIcon, name: "Gemini", width: 100, height: 100 },
-    { src: capcutIcon, name: "Capcut", width: 100, height: 100 },
-    { src: notionIcon, name: "Notion", width: 100, height: 100 },
-    { src: clarityIcon, name: "Microsoft Clarity", width: 100, height: 100 },
-    { src: lookerIcon, name: "Looker Studio", width: 100, height: 100 },
+    { src: metaIcon, name: "Meta Ads", width: 90, height: 80 },
+    { src: googleIcon, name: "Google Ads", width: 90, height: 90 },
+    { src: tiktokIcon, name: "TikTok Ads", width: 90, height: 90 },
+    { src: gtmIcon, name: "GTM", width: 90, height: 90 },
+    { src: analyticsIcon, name: "GA4", width: 80, height: 80 },
+    { src: shopifyIcon, name: "Shopify", width: 90, height: 90 },
+    { src: wordpressIcon, name: "Wordpress", width: 90, height: 90 },
+    { src: canvaIcon, name: "Canva", width: 90, height: 90 },
+    { src: chatgptIcon, name: "Chat GPT", width: 90, height: 90 },
+    { src: geminiIcon, name: "Gemini", width: 90, height: 90 },
+    { src: capcutIcon, name: "Capcut", width: 90, height: 90 },
+    { src: notionIcon, name: "Notion", width: 90, height: 90 },
+    { src: clarityIcon, name: "Microsoft Clarity", width: 90, height: 90 },
+    { src: lookerIcon, name: "Looker Studio", width: 90, height: 90 },
   ];
 
   return (
@@ -53,7 +53,7 @@ const ToolsSection = () => {
             </span>
           </div>
           <h2 className="text-white text-3xl md:text-4xl font-bold mb-6 tracking-tight leading-tight">
-            Tools I Use to Drive
+            Tools and Software I use for
             <span className="block text-[#EF6C00] mt-2">Campaign Success</span>
           </h2>
           <p className="text-[#808080] text-lg md:text-xl max-w-3xl mx-auto">
@@ -62,7 +62,7 @@ const ToolsSection = () => {
         </div>
 
         {/* Display Images */}
-        <div className="grid grid-cols-3 md:grid-cols-5  gap-8 items-center justify-center">
+        <div className="grid max-w-5xl mx-auto grid-cols-3 md:grid-cols-5  gap-8 items-center justify-center">
           {images.map((image, index) => (
             <div key={index} className="flex flex-col items-center justify-center">
               <Image
