@@ -7,29 +7,31 @@ import tiktokIcon from "../../public/7564186_tiktok_logo_brand_icon.png";
 import gtmIcon from "../../public/icons8-google-tag-manager-480.png";
 import analyticsIcon from "../../public/google_analytics_image_logo_icon_168152.png";
 import shopifyIcon from "../../public/shopify.png";
-import woocommerceIcon from "../../public/toppng.com-woocommerce-logo-free-download-857x512.png";
+import wordpressIcon from "../../public/wordpress-logo (1).svg";
 import canvaIcon from "../../public/canva-icon.webp";
 import chatgptIcon from "../../public/artificial-intelligence.png";
 import capcutIcon from "../../public/capcut.svg";
 import notionIcon from "../../public/notion.svg";
 import clarityIcon from "../../public/siteIcon.png";
 import lookerIcon from "../../public/looker-icon.svg";
+import geminiIcon from "../../public/Google_Gemini_icon_2025.svg";
 
 const ToolsSection = () => {
   const images = [
-    { src: metaIcon, name: "Meta", width: 100, height: 100 },
-    { src: googleIcon, name: "Google", width: 80, height: 80 },
-    { src: tiktokIcon, name: "TikTok", width: 90, height: 90 },
+    { src: metaIcon, name: "Meta Ads", width: 100, height: 100 },
+    { src: googleIcon, name: "Google Ads", width: 100, height: 100 },
+    { src: tiktokIcon, name: "TikTok Ads", width: 100, height: 100 },
     { src: gtmIcon, name: "Google Tag Manager", width: 100, height: 100 },
-    { src: analyticsIcon, name: "Google Analytics", width: 100, height: 100 },
+    { src: analyticsIcon, name: "Google Analytics", width: 90, height: 90 },
     { src: shopifyIcon, name: "Shopify", width: 100, height: 100 },
-    { src: woocommerceIcon, name: "Woo Commerce", width: 100, height: 100 },
+    { src: wordpressIcon, name: "Wordpress", width: 100, height: 100 },
     { src: canvaIcon, name: "Canva", width: 100, height: 100 },
     { src: chatgptIcon, name: "Chat GPT", width: 100, height: 100 },
+    { src: geminiIcon, name: "Gemini", width: 100, height: 100 },
     { src: capcutIcon, name: "Capcut", width: 100, height: 100 },
     { src: notionIcon, name: "Notion", width: 100, height: 100 },
     { src: clarityIcon, name: "Microsoft Clarity", width: 100, height: 100 },
-    { src: lookerIcon, name: "Microsoft Clarity", width: 100, height: 100 },
+    { src: lookerIcon, name: "Looker Studio", width: 100, height: 100 },
   ];
 
   return (
@@ -60,9 +62,9 @@ const ToolsSection = () => {
         </div>
 
         {/* Display Images */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 justify-items-center">
+        <div className="grid grid-cols-3 md:grid-cols-5  gap-8 items-center justify-center">
           {images.map((image, index) => (
-            <div key={index} className="flex flex-col items-center">
+            <div key={index} className="flex flex-col items-center justify-center">
               <Image
                 src={image.src}
                 alt={image.name}
