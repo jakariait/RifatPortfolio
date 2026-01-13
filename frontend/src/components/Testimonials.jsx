@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import "./Testimonials.css";
 import ImageComponent from "@/components/ImageComponent";
 
 const Testimonials = () => {
@@ -18,7 +19,7 @@ const Testimonials = () => {
         setTestimonials(data);
       })
       .catch((err) => console.error("Error fetching testimonials:", err));
-  }, []);
+  }, [apiURL]);
 
   return (
     <div
@@ -39,17 +40,19 @@ const Testimonials = () => {
           <Swiper
             modules={[Autoplay]}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
-            loop={true}
+            rewind={true}
             spaceBetween={30}
             slidesPerView={3}
+            centeredSlides={true}
             breakpoints={{
               340: { slidesPerView: 1 },
               1024: { slidesPerView: 3 },
             }}
+            className="testimonial-swiper"
           >
             {testimonials.map((item, index) => (
               <SwiperSlide key={item._id || index}>
-                <div className="flex justify-center">
+                <div className="flex justify-center items-center h-full">
                   <ImageComponent
                     imageName={item.imgSrc}
                     alt={`Client ${index + 1}`}
