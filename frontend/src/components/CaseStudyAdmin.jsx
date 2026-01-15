@@ -40,6 +40,7 @@ const CaseStudyAdmin = () => {
     keyResults: "",
     description: "",
     brandLogo: null,
+    caseStudyThumbnail: null,
   });
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -85,6 +86,7 @@ const CaseStudyAdmin = () => {
       keyResults: "",
       description: "",
       brandLogo: null,
+    caseStudyThumbnail: null,
     });
     setOpen(true);
   };
@@ -103,6 +105,7 @@ const CaseStudyAdmin = () => {
         keyResults: data.keyResults,
         description: data.description,
         brandLogo: null,
+    caseStudyThumbnail: null,
       });
       setIsEditing(true);
       setCurrentSlug(slug);
@@ -126,7 +129,8 @@ const CaseStudyAdmin = () => {
   };
 
   const handleFileChange = (e) => {
-    setFormData({ ...formData, brandLogo: e.target.files[0] });
+    const { name, files } = e.target;
+    setFormData({ ...formData, [name]: files[0] });
   };
 
   const handleSubmit = async (e) => {
@@ -134,7 +138,7 @@ const CaseStudyAdmin = () => {
     const submissionData = new FormData();
     Object.keys(formData).forEach((key) => {
       const value = formData[key];
-      if (key === "brandLogo") {
+      if (key === "brandLogo" || key === "caseStudyThumbnail") {
         if (value) {
           submissionData.append(key, value);
         }
@@ -313,6 +317,18 @@ const CaseStudyAdmin = () => {
               />
             </Button>
             {formData.brandLogo && <p>{formData.brandLogo.name}</p>}
+            <Button variant="contained" component="label" sx={{ mt: 2, ml: 2 }}>
+              Upload Case Study Thumbnail
+              <input
+                type="file"
+                name="caseStudyThumbnail"
+                hidden
+                onChange={handleFileChange}
+              />
+            </Button>
+            {formData.caseStudyThumbnail && (
+              <p>{formData.caseStudyThumbnail.name}</p>
+            )}
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>

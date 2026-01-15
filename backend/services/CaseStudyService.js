@@ -15,22 +15,35 @@ const getCaseStudyBySlug = async (slug) => {
   return CaseStudyModel.findOne({ slug });
 };
 
-const updateCaseStudyBySlug = async (slug, data, newImage) => {
+const updateCaseStudyBySlug = async (slug, data, newImages) => {
     const caseStudy = await CaseStudyModel.findOne({ slug });
     if (!caseStudy) {
         throw new Error("Case study not found");
     }
 
-    // If there's a new image, delete the old one
-    if (newImage && caseStudy.brandLogo) {
-        const oldImagePath = path.join(__dirname, '..', 'uploads', caseStudy.brandLogo);
-        if (fs.existsSync(oldImagePath)) {
-            fs.unlinkSync(oldImagePath);
+    // Handle brandLogo update
+    if (newImages.brandLogo) {
+        if (caseStudy.brandLogo) {
+            const oldImagePath = path.join(__dirname, '..', 'uploads', caseStudy.brandLogo);
+            if (fs.existsSync(oldImagePath)) {
+                fs.unlinkSync(oldImagePath);
+            }
         }
-        caseStudy.brandLogo = newImage;
+        caseStudy.brandLogo = newImages.brandLogo;
     }
     
-    // Update fields
+    // Handle caseStudyThumbnail update
+    if (newImages.caseStudyThumbnail) {
+        if (caseStudy.caseStudyThumbnail) {
+            const oldImagePath = path.join(__dirname, '..', 'uploads', caseStudy.caseStudyThumbnail);
+            if (fs.existsSync(oldImagePath)) {
+                fs.unlinkSync(oldImagePath);
+            }
+        }
+        caseStudy.caseStudyThumbnail = newImages.caseStudyThumbnail;
+    }
+    
+    // Update other fields
     Object.assign(caseStudy, data);
 
     return await caseStudy.save();
@@ -39,10 +52,18 @@ const updateCaseStudyBySlug = async (slug, data, newImage) => {
 
 const deleteCaseStudyBySlug = async (slug) => {
     const caseStudy = await CaseStudyModel.findOne({ slug });
-    if (caseStudy && caseStudy.brandLogo) {
-        const imagePath = path.join(__dirname, '..', 'uploads', caseStudy.brandLogo);
-        if (fs.existsSync(imagePath)) {
-            fs.unlinkSync(imagePath);
+    if (caseStudy) {
+        if (caseStudy.brandLogo) {
+            const imagePath = path.join(__dirname, '..', 'uploads', caseStudy.brandLogo);
+            if (fs.existsSync(imagePath)) {
+                fs.unlinkSync(imagePath);
+            }
+        }
+        if (caseStudy.caseStudyThumbnail) {
+            const imagePath = path.join(__dirname, '..', 'uploads', caseStudy.caseStudyThumbnail);
+            if (fs.existsSync(imagePath)) {
+                fs.unlinkSync(imagePath);
+            }
         }
     }
     return CaseStudyModel.findOneAndDelete({ slug });

@@ -67,6 +67,10 @@ const upload = multer({ storage }).fields([
     name: "brandLogo",
     maxCount: 1,
   },
+  {
+    name: "caseStudyThumbnail",
+    maxCount: 1,
+  },
 ]);
 
 // Serve images from the 'uploads' folder as static files

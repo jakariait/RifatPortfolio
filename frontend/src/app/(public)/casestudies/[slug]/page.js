@@ -72,7 +72,7 @@ export default function Page({ params }) {
           <div className="lg:col-span-2 bg-[#0f0f0f] border border-[#1f1f1f] rounded-3xl p-8">
             {/* Key Results */}
             {caseStudy.keyResults && (
-              <div className="mb-10">
+              <div className="mb-10 flex flex-col items-center justify-center">
                 <div className={"text-white flex items-center gap-4 mb-4"}>
                   <ChartNoAxesCombined className="text-[#EF6C00]" />
                   <h2 className="text-2xl font-semibold">Key Results</h2>
@@ -82,6 +82,12 @@ export default function Page({ params }) {
                 </p>
               </div>
             )}
+
+            <ImageComponent
+              imageName={caseStudy.caseStudyThumbnail}
+              altName={caseStudy.title}
+              className={"pb-5 rounded-2xl"}
+            />
 
             {/* Description */}
             <div>

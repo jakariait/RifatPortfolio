@@ -74,7 +74,10 @@ const CaseStudy = () => {
   }
 
   return (
-    <div id={"case-study"} className="bg-[#0a0a0a] py-10 px-5 relative overflow-hidden">
+    <div
+      id={"case-study"}
+      className="bg-[#0a0a0a] py-10 px-5 relative overflow-hidden"
+    >
       {/* Premium gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#EF6C00] via-transparent to-transparent opacity-5"></div>
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#EF6C00] rounded-full opacity-10 blur-[120px]"></div>
@@ -114,7 +117,7 @@ const CaseStudy = () => {
         </motion.div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 max-w-5xl mx-auto gap-6 mb-10">
           {currentCaseStudies.map((caseStudy, index) => (
             <motion.div
               key={caseStudy.slug}
@@ -127,25 +130,14 @@ const CaseStudy = () => {
               {/* Glow effect on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#EF6C00] to-transparent opacity-0 group-hover:opacity-5 transition-opacity duration-700"></div>
 
-              {/* Brand Logo and Industry Chip */}
-              <div className="flex items-center justify-between gap-4 mb-8">
-                {caseStudy.brandLogo && (
-                  <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-[#EF6C00] to-[#FF8F00] p-[1px] flex items-center justify-center">
-                    <div className="w-full h-full rounded-lg bg-[#0a0a0a] flex items-center justify-center p-1">
-                      <ImageComponent
-                        imageName={caseStudy.brandLogo}
-                        altName={caseStudy.title}
-                        className={"object-contain w-full h-full"}
-                      />
-                    </div>
-                  </div>
-                )}
-                {caseStudy.industry && (
-                  <span className="text-xs px-4 py-2 bg-[#1a1a1a] text-[#EF6C00] rounded-lg border border-[#2a2a2a] font-medium">
-                    {caseStudy.industry}
-                  </span>
-                )}
-              </div>
+              {/*Case Study Thumbnail*/}
+              {caseStudy.caseStudyThumbnail && (
+                <ImageComponent
+                  imageName={caseStudy.caseStudyThumbnail}
+                  alt={caseStudy.name}
+                  className={"aspect-square object-contain pb-5"}
+                />
+              )}
 
               {/* Content */}
               <div className="relative z-10">
@@ -168,9 +160,32 @@ const CaseStudy = () => {
                   </div>
                 )}
 
-                <Link href={`/casestudies/${caseStudy.slug}`}>
+                {/* Brand Logo and Industry Chip */}
+                <div className="flex items-center justify-between gap-4 mb-8">
+                  {caseStudy.brandLogo && (
+                    <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-[#EF6C00] to-[#FF8F00] p-[1px] flex items-center justify-center">
+                      <div className="w-full h-full rounded-lg bg-[#0a0a0a] flex items-center justify-center p-1">
+                        <ImageComponent
+                          imageName={caseStudy.brandLogo}
+                          altName={caseStudy.title}
+                          className={"object-contain w-full h-full"}
+                        />
+                      </div>
+                    </div>
+                  )}
+                  {caseStudy.industry && (
+                    <span className="text-xs px-4 py-2 bg-[#1a1a1a] text-[#EF6C00] rounded-lg border border-[#2a2a2a] font-medium">
+                      {caseStudy.industry}
+                    </span>
+                  )}
+                </div>
+
+                <Link
+                  href={`/casestudies/${caseStudy.slug}`}
+                  className={"flex items-center justify-center"}
+                >
                   <div className="group relative inline-block text-sm font-semibold text-white">
-                    <span className="relative z-10 px-5 py-3 bg-[#EF6C00] rounded-xl transition-all duration-300 group-hover:shadow-[0_10px_30px_rgba(239,108,0,0.3)]">
+                    <span className="relative z-10 px-5 py-3 bg-[#EF6C00] rounded-xl transition-all duration-300 group-hover:shadow-[0_10px_30px_rgba(239,108,0,0.3)] ">
                       Read Case Study
                     </span>
                   </div>

@@ -16,6 +16,7 @@ const DataSchema = mongoose.Schema(
     },
     keyResults: String,
     description: String,
+    caseStudyThumbnail: String,
   },
   {
     timestamps: true,

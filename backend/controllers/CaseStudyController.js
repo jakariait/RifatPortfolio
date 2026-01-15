@@ -13,13 +13,19 @@ const createCaseStudy = async (req, res) => {
       description,
     } = req.body;
 
-    let brandLogo;
-    if (req.files && req.files.brandLogo) {
-      brandLogo = req.files.brandLogo[0].filename;
+    let brandLogo, caseStudyThumbnail;
+    if (req.files) {
+      if (req.files.brandLogo) {
+        brandLogo = req.files.brandLogo[0].filename;
+      }
+      if (req.files.caseStudyThumbnail) {
+        caseStudyThumbnail = req.files.caseStudyThumbnail[0].filename;
+      }
     }
 
     const caseStudy = await CaseStudyService.createCaseStudy({
       brandLogo,
+      caseStudyThumbnail,
       brandTitle,
       brandWebsite,
       founder,
@@ -76,13 +82,18 @@ const updateCaseStudyBySlug = async (req, res) => {
     try {
         const { slug } = req.params;
         const data = req.body;
-        let newImage;
+        const newImages = {};
 
-        if (req.files && req.files.brandLogo) {
-            newImage = req.files.brandLogo[0].filename;
+        if (req.files) {
+            if (req.files.brandLogo) {
+                newImages.brandLogo = req.files.brandLogo[0].filename;
+            }
+            if (req.files.caseStudyThumbnail) {
+                newImages.caseStudyThumbnail = req.files.caseStudyThumbnail[0].filename;
+            }
         }
 
-        const updatedCaseStudy = await CaseStudyService.updateCaseStudyBySlug(slug, data, newImage);
+        const updatedCaseStudy = await CaseStudyService.updateCaseStudyBySlug(slug, data, newImages);
 
         if (!updatedCaseStudy) {
             return res.status(404).json({ success: false, message: "Case study not found" });
