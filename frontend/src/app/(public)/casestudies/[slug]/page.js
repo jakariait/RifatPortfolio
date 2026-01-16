@@ -83,11 +83,13 @@ export default function Page({ params }) {
               </div>
             )}
 
-            <ImageComponent
-              imageName={caseStudy.caseStudyThumbnail}
-              altName={caseStudy.title}
-              className={"pb-5 rounded-2xl"}
-            />
+            {caseStudy.caseStudyThumbnail && (
+              <ImageComponent
+                imageName={caseStudy.caseStudyThumbnail}
+                altName={caseStudy.title}
+                className={"pb-5 rounded-2xl"}
+              />
+            )}
 
             {/* Description */}
             <div>
