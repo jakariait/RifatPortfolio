@@ -69,15 +69,15 @@ export default function Page({ params }) {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Main Content */}
-          <div className="lg:col-span-2 bg-[#0f0f0f] border border-[#1f1f1f] rounded-3xl p-8">
+          <div className="lg:col-span-2 bg-white border border-[#1f1f1f] rounded-3xl p-8">
             {/* Key Results */}
             {caseStudy.keyResults && (
               <div className="mb-10 flex flex-col items-center justify-center">
-                <div className={"text-white flex items-center gap-4 mb-4"}>
+                <div className={"text-[#EF6C00] flex items-center gap-4 mb-4"}>
                   <ChartNoAxesCombined className="text-[#EF6C00]" />
                   <h2 className="text-2xl font-semibold">Key Results</h2>
                 </div>
-                <p className="text-gray-300 whitespace-pre-wrap text-lg">
+                <p className="text-black whitespace-pre-wrap text-lg">
                   {caseStudy.keyResults}
                 </p>
               </div>
@@ -91,13 +91,16 @@ export default function Page({ params }) {
 
             {/* Description */}
             <div>
-              <h2 className="text-2xl font-semibold mb-4 text-white">
+              <h2 className="text-2xl font-semibold mb-4 ">
                 Description
               </h2>
               <div
-                className="prose prose-invert max-w-none text-gray-300"
+                className="prose prose-invert max-w-none  rendered-html"
                 dangerouslySetInnerHTML={{ __html: caseStudy.description }}
               />
+              <div className={"text-black"}>
+                {caseStudy.description}
+              </div>
             </div>
           </div>
 

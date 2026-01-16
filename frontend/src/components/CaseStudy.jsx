@@ -135,26 +135,26 @@ const CaseStudy = () => {
                 <ImageComponent
                   imageName={caseStudy.caseStudyThumbnail}
                   alt={caseStudy.name}
-                  className={"aspect-square object-contain pb-5"}
+                  className={"pb-5"}
                 />
               )}
 
               {/* Content */}
               <div className="relative z-10">
                 <div className="mb-4">
-                  <h3 className="text-white text-2xl font-bold mb-2 group-hover:text-[#EF6C00] transition-colors duration-300">
+                  <h3 className="text-[#EF6C00] text-2xl font-bold mb-2 group-hover:text-[#EF6C00] transition-colors duration-300">
                     {caseStudy.title}
                   </h3>
                 </div>
 
                 {caseStudy.keyResults && (
                   <div className={"flex flex-col gap-4"}>
-                    <div className={"text-white flex items-center gap-4"}>
+                    <div className={"text-[#EF6C00] flex items-center gap-4"}>
                       <ChartNoAxesCombined />
                       <h2>Key Result</h2>
                     </div>
 
-                    <p className="text-white leading-relaxed mb-8 text-base">
+                    <p className="text-gray-200 leading-relaxed mb-8 text-base">
                       {caseStudy.keyResults}
                     </p>
                   </div>
