@@ -91,16 +91,11 @@ export default function Page({ params }) {
 
             {/* Description */}
             <div>
-              <h2 className="text-2xl font-semibold mb-4 ">
-                Description
-              </h2>
+              <h2 className="text-2xl font-semibold mb-4 ">Description</h2>
               <div
-                className="prose prose-invert max-w-none  rendered-html"
+                className="max-w-none  rendered-html"
                 dangerouslySetInnerHTML={{ __html: caseStudy.description }}
               />
-              <div className={"text-black"}>
-                {caseStudy.description}
-              </div>
             </div>
           </div>
 

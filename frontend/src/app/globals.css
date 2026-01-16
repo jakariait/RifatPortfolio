@@ -22,11 +22,18 @@ html {
 
 .rendered-html ol {
   @apply list-decimal list-inside pl-4 mb-2;
+  list-style: disc;
+  margin-left: 20px;
 }
 
 .rendered-html li {
   @apply mb-1 ;
 }
+
+/*.rendered-html ol li[data-list="bullet"] {*/
+/*  list-style: disc;*/
+/*  padding-right: 1em;*/
+/*}*/
 
 .rendered-html h1 {
   @apply text-2xl font-bold mt-4 mb-2;
