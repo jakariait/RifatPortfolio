@@ -117,7 +117,7 @@ const CaseStudy = () => {
         </motion.div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 max-w-5xl mx-auto gap-6 mb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 mx-auto gap-6 mb-10">
           {currentCaseStudies.map((caseStudy, index) => (
             <motion.div
               key={caseStudy.slug}
