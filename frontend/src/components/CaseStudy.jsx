@@ -21,7 +21,7 @@ async function getCaseStudies() {
   }
 }
 
-const CaseStudy = () => {
+const CaseStudy = ({ isHomepage = false }) => {
   const [caseStudies, setCaseStudies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -48,10 +48,14 @@ const CaseStudy = () => {
   const totalPages = Math.ceil(totalCaseStudies / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentCaseStudies = caseStudies.slice(
+  const paginatedCaseStudies = caseStudies.slice(
     indexOfFirstItem,
     indexOfLastItem,
   );
+
+  const caseStudiesToShow = isHomepage
+    ? caseStudies.slice(0, 3)
+    : paginatedCaseStudies;
 
   const nextPage = () => {
     if (currentPage < totalPages) {
@@ -118,7 +122,7 @@ const CaseStudy = () => {
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 mx-auto gap-6 mb-10">
-          {currentCaseStudies.map((caseStudy, index) => (
+          {caseStudiesToShow.map((caseStudy, index) => (
             <motion.div
               key={caseStudy.slug}
               initial={{ opacity: 0, y: 50 }}
@@ -198,8 +202,19 @@ const CaseStudy = () => {
           ))}
         </div>
 
+        {isHomepage && totalCaseStudies > 3 && (
+          <div className="text-center mt-10">
+            <Link
+              href="/casestudies"
+              className="px-6 py-3 bg-[#EF6C00] text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-[0_10px_30px_rgba(239,108,0,0.3)]"
+            >
+              View All Case Studies
+            </Link>
+          </div>
+        )}
+
         {/* Pagination Controls */}
-        {totalPages > 1 && (
+        {!isHomepage && totalPages > 1 && (
           <div className="flex justify-center items-center gap-4 mt-8">
             <button
               onClick={prevPage}

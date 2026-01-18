@@ -15,7 +15,7 @@ export default function Home() {
       <SustainableGrowth/>
       <Clients />
       <Testimonial />
-      <CaseStudy />
+      <CaseStudy  isHomepage={true}/>
       <ToolsSection />
       <PricingPlans />
       <FaqAccordion />
