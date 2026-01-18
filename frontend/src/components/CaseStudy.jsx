@@ -26,7 +26,7 @@ const CaseStudy = ({ isHomepage = false }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 9;
 
   useEffect(() => {
     const fetchCaseStudies = async () => {
@@ -110,14 +110,14 @@ const CaseStudy = ({ isHomepage = false }) => {
         >
           <div className="inline-block ">
             <span className="text-white text-sm font-semibold tracking-[0.3em] uppercase border border-[#EF6C00] border-opacity-30 px-6 py-2 rounded-full bg-[#EF6C00] bg-opacity-5 backdrop-blur-sm">
-              Our Work
+              My Work
             </span>
           </div>
           <h1 className="text-white mt-4 text-3xl md:text-4xl font-bold mb-6 tracking-tight leading-tight">
-            Our Case Studies
+            My Case Studies
           </h1>
           <p className="text-[#808080] text-lg md:text-xl max-w-3xl mx-auto ">
-            A showcase of our {totalCaseStudies} successful partnerships and
+            A showcase of my {totalCaseStudies} successful partnerships and
             measurable results.
           </p>
         </motion.div>
