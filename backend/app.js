@@ -33,6 +33,8 @@ mongoose
 
 // Client URL for CORS setup
 const clientUrl = process.env.CLIENT_URL
+  ? process.env.CLIENT_URL.split(",").map((url) => url.replace(/\/$/, ""))
+  : ["http://localhost:3000"];
 
 // CORS setup
 const corsOptions = {
@@ -56,8 +58,6 @@ app.use(compression());
 
 // Cookie parsing middleware
 app.use(cookieParser());
-
-
 
 // CORS setup to allow cross-origin requests
 app.use(cors(corsOptions));
