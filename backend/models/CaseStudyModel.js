@@ -17,6 +17,10 @@ const DataSchema = mongoose.Schema(
     keyResults: String,
     description: String,
     caseStudyThumbnail: String,
+    order: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,

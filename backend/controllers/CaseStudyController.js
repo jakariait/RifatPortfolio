@@ -124,10 +124,37 @@ const deleteCaseStudyBySlug = async (req, res) => {
   }
 };
 
+const updateCaseStudiesOrder = async (req, res) => {
+  console.log("Received request to reorder case studies:", req.body);
+  try {
+    const { orderedIds } = req.body; // Array of _id strings
+    if (!orderedIds || !Array.isArray(orderedIds)) {
+      console.error("Validation failed: orderedIds is missing or not an array");
+      return res
+        .status(400)
+        .json({ success: false, message: "Missing or invalid orderedIds" });
+    }
+    await CaseStudyService.updateCaseStudiesOrder(orderedIds);
+    console.log("Successfully reordered case studies.");
+    res.status(200).json({
+      success: true,
+      message: "Case studies order updated successfully",
+    });
+  } catch (error) {
+    console.error("Error updating case studies order:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to update case studies order",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   createCaseStudy,
   getAllCaseStudies,
   getCaseStudyBySlug,
   updateCaseStudyBySlug,
   deleteCaseStudyBySlug,
+  updateCaseStudiesOrder,
 };

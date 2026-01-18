@@ -16,14 +16,58 @@ import {
   TableRow,
   Paper,
   IconButton,
-  TablePagination,
   Snackbar,
   Alert,
   DialogContentText,
 } from "@mui/material";
-import { Edit, Delete } from "@mui/icons-material";
+import { Edit, Delete, DragIndicator } from "@mui/icons-material";
 import useAuthAdminStore from "@/store/AuthAdminStore";
 import { Editor } from "primereact/editor";
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  useSortable,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+
+const DraggableTableRow = ({ study, handleEditClick, handleDeleteClick }) => {
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: study._id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  return (
+    <TableRow ref={setNodeRef} style={style} {...attributes}>
+      <TableCell>
+        <div {...listeners} style={{ cursor: "grab" }}>
+          <DragIndicator />
+        </div>
+      </TableCell>
+      <TableCell>{study.title}</TableCell>
+      <TableCell>{study.industry}</TableCell>
+      <TableCell>{study.brandTitle}</TableCell>
+      <TableCell>
+        <IconButton onClick={() => handleEditClick(study.slug)}>
+          <Edit />
+        </IconButton>
+        <IconButton onClick={() => handleDeleteClick(study.slug)}>
+          <Delete />
+        </IconButton>
+      </TableCell>
+    </TableRow>
+  );
+};
 
 const CaseStudyAdmin = () => {
   const [caseStudies, setCaseStudies] = useState([]);
@@ -42,8 +86,6 @@ const CaseStudyAdmin = () => {
     brandLogo: null,
     caseStudyThumbnail: null,
   });
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [slugToDelete, setSlugToDelete] = useState(null);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -86,7 +128,7 @@ const CaseStudyAdmin = () => {
       keyResults: "",
       description: "",
       brandLogo: null,
-    caseStudyThumbnail: null,
+      caseStudyThumbnail: null,
     });
     setOpen(true);
   };
@@ -105,7 +147,7 @@ const CaseStudyAdmin = () => {
         keyResults: data.keyResults,
         description: data.description,
         brandLogo: null,
-    caseStudyThumbnail: null,
+        caseStudyThumbnail: null,
       });
       setIsEditing(true);
       setCurrentSlug(slug);
@@ -195,20 +237,49 @@ const CaseStudyAdmin = () => {
     setSlugToDelete(null);
   };
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
   const handleSnackbarClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
     setSnackbarOpen(false);
+  };
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8,
+      },
+    }),
+  );
+
+  const handleDragEnd = async (event) => {
+    const { active, over } = event;
+    if (active.id !== over.id) {
+      setCaseStudies((items) => {
+        const oldIndex = items.findIndex((item) => item._id === active.id);
+        const newIndex = items.findIndex((item) => item._id === over.id);
+        const newItems = arrayMove(items, oldIndex, newIndex);
+
+        const orderedIds = newItems.map((item) => item._id);
+        api
+          .put("/casestudy/reorder", { orderedIds })
+          .then(() => {
+            setSnackbarMessage("Case study order updated successfully!");
+            setSnackbarSeverity("success");
+            setSnackbarOpen(true);
+            fetchCaseStudies();
+          })
+          .catch(() => {
+            setSnackbarMessage("Error updating case study order.");
+            setSnackbarSeverity("error");
+            setSnackbarOpen(true);
+            // Optionally revert state on failure
+            fetchCaseStudies();
+          });
+
+        return newItems;
+      });
+    }
   };
 
   return (
@@ -296,7 +367,6 @@ const CaseStudyAdmin = () => {
               onChange={handleChange}
             />
             <Editor
-              // ref={editorRef}
               value={formData.description}
               onTextChange={(e) =>
                 handleChange({
@@ -356,46 +426,40 @@ const CaseStudyAdmin = () => {
         </DialogActions>
       </Dialog>
 
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Title</TableCell>
-              <TableCell>Industry</TableCell>
-              <TableCell>Brand</TableCell>
-              <TableCell>Actions</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {caseStudies
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((study) => (
-                <TableRow key={study.slug}>
-                  <TableCell>{study.title}</TableCell>
-                  <TableCell>{study.industry}</TableCell>
-                  <TableCell>{study.brandTitle}</TableCell>
-                  <TableCell>
-                    <IconButton onClick={() => handleEditClick(study.slug)}>
-                      <Edit />
-                    </IconButton>
-                    <IconButton onClick={() => handleDeleteClick(study.slug)}>
-                      <Delete />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              ))}
-          </TableBody>
-        </Table>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={caseStudies.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </TableContainer>
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEnd}
+      >
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell style={{ width: "5%" }} />
+                <TableCell>Title</TableCell>
+                <TableCell>Industry</TableCell>
+                <TableCell>Brand</TableCell>
+                <TableCell>Actions</TableCell>
+              </TableRow>
+            </TableHead>
+            <SortableContext
+              items={caseStudies.map((s) => s._id)}
+              strategy={verticalListSortingStrategy}
+            >
+              <TableBody>
+                {caseStudies.map((study) => (
+                  <DraggableTableRow
+                    key={study._id}
+                    study={study}
+                    handleEditClick={handleEditClick}
+                    handleDeleteClick={handleDeleteClick}
+                  />
+                ))}
+              </TableBody>
+            </SortableContext>
+          </Table>
+        </TableContainer>
+      </DndContext>
 
       <Snackbar
         open={snackbarOpen}

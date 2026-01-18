@@ -167,11 +167,18 @@ router.post(
 router.get("/casestudy", CaseStudyController.getAllCaseStudies);
 router.get("/casestudy/:slug", CaseStudyController.getCaseStudyBySlug);
 router.put(
+  "/casestudy/reorder",
+  adminProtect,
+  CaseStudyController.updateCaseStudiesOrder,
+);
+
+router.put(
   "/casestudy/:slug",
   upload,
   adminProtect,
   CaseStudyController.updateCaseStudyBySlug,
 );
+
 router.delete(
   "/casestudy/:slug",
   adminProtect,

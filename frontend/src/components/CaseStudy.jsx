@@ -80,7 +80,9 @@ const CaseStudy = ({ isHomepage = false }) => {
   return (
     <div
       id={"case-study"}
-      className="bg-[#0a0a0a] py-10 px-5 relative overflow-hidden"
+      className={`bg-[#0a0a0a] py-10 px-5 relative overflow-hidden ${
+        isHomepage ? "" : "min-h-screen"
+      }`}
     >
       {/* Premium gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#EF6C00] via-transparent to-transparent opacity-5"></div>
