@@ -49,11 +49,11 @@ export default function FuturisticImage() {
           </div>
 
           {/* Inner Circle with Image */}
-          <div className="absolute inset-[5%] rounded-full bg-[#1a1a2e] border-2 border-[#00d4ff] flex justify-center items-center z-10 overflow-hidden">
+          <div className="absolute inset-[5%] rounded-full bg-[#1a1a2e]  flex justify-center items-center z-10 overflow-hidden">
             <img
-              src="/hero-img.jpeg"
+              src="/hero-img-new.jpeg"
               alt=""
-              className="w-full  border-2 border-white rounded-full"
+              className="w-full rounded-full"
             />
           </div>
         </div>
