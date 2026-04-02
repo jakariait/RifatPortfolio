@@ -1,91 +1,56 @@
-// import ImageComponent from "@/components/ImageComponent";
-// import AnimatedItem from "@/components/AnimatedItem";
-//
-// async function getBrands() {
-//   const apiURL = process.env.NEXT_PUBLIC_API_URL;
-//
-//   const res = await fetch(
-//     `${apiURL}/getallcarousel`,
-//     { cache: "no-store" }, // or { next: { revalidate: 60 } }
-//   );
-//
-//   if (!res.ok) {
-//     throw new Error("Failed to fetch brands");
-//   }
-//
-//   return res.json();
-// }
-//
-// const Clients = async () => {
-//   const brands = await getBrands();
-//
-//   return (
-//     <div
-//       id="testimonial"
-//       className="bg-black pt-10 p-4 scroll-mt-20"
-//       style={{
-//         backgroundImage: "url('/certificate-bg.png')",
-//         backgroundSize: "cover",
-//         backgroundPosition: "center",
-//       }}
-//     >
-//       <div className="xl:container xl:mx-auto text-center">
-//         <h2 className="text-xl md:text-2xl font-bold text-[#EF6C00] mb-10">
-//           Clients I worked with:
-//         </h2>
-//
-//         <div className="grid grid-cols-2 md:grid-cols-5 gap-x-4 gap-y-10">
-//           {brands.map((brand, index) => (
-//             <AnimatedItem
-//               key={index}
-//               index={index}
-//               className="flex justify-center items-center"
-//             >
-//               <ImageComponent
-//                 imageName={brand.imgSrc}
-//                 alt={`Logo ${index + 1}`}
-//                 className="h-44 w-44 rounded-full object-cover"
-//               />
-//             </AnimatedItem>
-//           ))}
-//         </div>
-//
-//         <a
-//           href="https://wa.me/8801307217573"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           className="bg-[#EF6C00] px-6 py-4 rounded-xl font-bold text-white inline-flex items-center gap-2 mt-10"
-//         >
-//           Work With Me
-//         </a>
-//       </div>
-//     </div>
-//   );
-// };
-//
-// export default Clients;
 
+"use client";
 
+import { useEffect, useState } from "react";
 import ImageComponent from "@/components/ImageComponent";
 import AnimatedItem from "@/components/AnimatedItem";
 
-async function getBrands() {
-  const apiURL = process.env.NEXT_PUBLIC_API_URL;
+const Clients = () => {
+  const [brands, setBrands] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const res = await fetch(
-    `${apiURL}/getallcarousel`,
-    { cache: "no-store" },
-  );
+  useEffect(() => {
+    const fetchBrands = async () => {
+      const apiURL = process.env.NEXT_PUBLIC_API_URL;
+      try {
+        const res = await fetch(`${apiURL}/getallcarousel`, {
+          cache: "no-store",
+        });
+        if (!res.ok) throw new Error("Failed to fetch brands");
+        const data = await res.json();
+        setBrands(data);
+      } catch (error) {
+        console.error("Error fetching brands:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBrands();
+  }, []);
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch brands");
+  if (loading) {
+    return (
+      <div
+        id="testimonial"
+        className="bg-[#0a0a0a] py-10 px-5 scroll-mt-20 relative overflow-hidden min-h-[400px]"
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-[#EF6C00] via-transparent to-transparent opacity-5"></div>
+        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-[#EF6C00] rounded-full opacity-10 blur-[120px]"></div>
+        <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-[#EF6C00] rounded-full opacity-10 blur-[120px]"></div>
+        <div
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage:
+              "linear-gradient(#EF6C00 1px, transparent 1px), linear-gradient(90deg, #EF6C00 1px, transparent 1px)",
+            backgroundSize: "50px 50px",
+          }}
+        ></div>
+        <div className="xl:container xl:mx-auto relative z-10 flex items-center justify-center min-h-[300px]">
+          <div className="text-[#EF6C00] text-lg animate-pulse">Loading...</div>
+        </div>
+      </div>
+    );
   }
-
-  return res.json();
-}
-
-const Clients = async () => {
-  const brands = await getBrands();
 
   return (
     <div
