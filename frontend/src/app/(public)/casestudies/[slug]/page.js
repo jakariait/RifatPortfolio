@@ -1,30 +1,57 @@
-import React, { use } from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
 import ImageComponent from "@/components/ImageComponent";
 import { Building2, ChartNoAxesCombined } from "lucide-react";
 
-async function getCaseStudy(slug) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-  try {
-    const res = await fetch(`${baseUrl}/casestudy/${slug}`, {
-      cache: "no-store", // Ensures data is fetched on every request, behaving like SSR
-    });
+export default function Page() {
+  const params = useParams();
+  const [caseStudyData, setCaseStudyData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    if (!res.ok) {
-      console.error("Failed to fetch case study:", res.status, res.statusText);
-      return null;
+  useEffect(() => {
+    async function fetchCaseStudy() {
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+      try {
+        const res = await fetch(`${baseUrl}/casestudy/${params.slug}`, {
+          cache: "no-store",
+        });
+
+        if (!res.ok) {
+          console.error("Failed to fetch case study:", res.status, res.statusText);
+          setError(true);
+          setLoading(false);
+          return;
+        }
+        const data = await res.json();
+        setCaseStudyData(data);
+      } catch (error) {
+        console.error("Error fetching case study:", error);
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
     }
-    return res.json();
-  } catch (error) {
-    console.error("Error fetching case study:", error);
-    return null;
+
+    if (params.slug) {
+      fetchCaseStudy();
+    }
+  }, [params.slug]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen bg-[#0a0a0a] text-white">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#EF6C00] mx-auto mb-4"></div>
+          <p className="text-gray-400">Loading case study...</p>
+        </div>
+      </div>
+    );
   }
-}
 
-export default function Page({ params }) {
-  const { slug } = use(params);
-  const caseStudyData = use(getCaseStudy(slug));
-
-  if (!caseStudyData || !caseStudyData.success) {
+  if (error || !caseStudyData || !caseStudyData.success) {
     return (
       <div className="flex justify-center items-center h-screen bg-[#0a0a0a] text-white">
         <div className="text-center">
